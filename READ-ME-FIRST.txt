@@ -1,0 +1,20 @@
+Iconix Beauty — GitHub Pages deployment
+
+1. Create a new repository on GitHub (e.g. iconix-store).
+2. Upload EVERYTHING inside this folder to the repository root
+   (index.html must sit at the top level, not inside a subfolder).
+3. Repo → Settings → Pages → Source: "Deploy from a branch",
+   Branch: main, Folder: / (root) → Save.
+4. Wait ~1 minute. Your site is live at
+   https://<your-username>.github.io/<repo-name>/
+
+Before you go live, open store.js and fill in:
+  - orderEmail   (your order inbox)
+  - whatsapp     (923XXXXXXXXX)
+  - the three emailjs ids  (see SETUP.md, 5 minutes, free)
+
+Until the EmailJS ids are filled in, checkout still works — it hands the
+customer a one-tap "send on WhatsApp / send by email" with the full order.
+
+Custom domain: Settings → Pages → Custom domain, then add a CNAME record
+at your registrar pointing to <your-username>.github.io.

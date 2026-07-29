@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Checkout — Iconix Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="store.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+  body { margin: 0; background: #FBF8F3; color: #14110E; }
+  a { color: #14110E; text-decoration: none; }
+  a:hover { color: #A8813A; }
+  input, textarea, select { font-family: 'Jost', sans-serif; }
+  input::placeholder, textarea::placeholder { color: #A9A197; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: #A8813A; }
+</style>
+</helmet>
+<div style="fontFamily:'Jost',sans-serif;background:#FBF8F3;color:#14110E">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+    <section style="maxWidth:720px;margin:0 auto;padding:clamp(70px,9vw,120px) clamp(20px,4vw,32px) clamp(80px,10vw,140px);textAlign:center">
+      <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 24px">Order received</p>
+      <h1 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(36px,6vw,52px);lineHeight:1.1;margin:0 0 22px">Thank you.</h1>
+      <p style="fontSize:16px;lineHeight:1.8;fontWeight:300;color:#4A4239;margin:0 0 12px">Your order <strong style="fontWeight:400">{{ orderId }}</strong> is with us. We'll confirm on WhatsApp within a few hours and dispatch within 3–5 working days.</p>
+      <p style="fontSize:14px;lineHeight:1.8;fontWeight:300;color:#8A8177;margin:0 0 44px">Payment is cash on delivery — {{ totalText }} to the courier.</p>
+      <a href="Shop.dc.html" style="display:inline-block;background:#14110E;color:#FBF8F3;padding:19px 40px;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase" style-hover="background:#A8813A;color:#fff">Continue shopping</a>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Checkout" style="maxWidth:1240px;margin:0 auto;padding:clamp(48px,6vw,70px) clamp(20px,4vw,32px) clamp(64px,8vw,110px);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(36px,5vw,72px);alignItems:start">
+      <div>
+        <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 18px">Cash on delivery</p>
+        <h1 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(32px,5.5vw,46px);lineHeight:1.1;margin:0 0 16px">Checkout</h1>
+        <p style="fontSize:15px;lineHeight:1.7;fontWeight:300;color:#6B6259;margin:0 0 44px;maxWidth:470px">Nothing is charged online. Fill this in and pay the courier when your parcel arrives.</p>
+
+        <form ref="{{ formRef }}" onSubmit="{{ submit }}" style="display:flex;flexDirection:column;gap:22px;maxWidth:560px">
+          <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:22px">
+            <label style="display:flex;flexDirection:column;gap:9px">
+              <span style="fontSize:10px;letterSpacing:.2em;textTransform:uppercase;color:#6B6259">Full name *</span>
+              <input name="customer_name" type="text" placeholder="Ayesha Khan" style="border:1px solid rgba(20,17,14,.18);background:#fff;padding:15px 16px;fontSize:14.5px;fontWeight:300;color:#14110E" />
+            </label>
+            <label style="display:flex;flexDirection:column;gap:9px">
+              <span style="fontSize:10px;letterSpacing:.2em;textTransform:uppercase;color:#6B6259">WhatsApp number *</span>
+              <input name="phone" type="tel" placeholder="0300 0000000" style="border:1px solid rgba(20,17,14,.18);background:#fff;padding:15px 16px;fontSize:14.5px;fontWeight:300;color:#14110E" />
+            </label>
+          </div>
+          <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:22px">
+            <label style="display:flex;flexDirection:column;gap:9px">
+              <span style="fontSize:10px;letterSpacing:.2em;textTransform:uppercase;color:#6B6259">City *</span>
+              <input name="city" type="text" placeholder="Lahore" style="border:1px solid rgba(20,17,14,.18);background:#fff;padding:15px 16px;fontSize:14.5px;fontWeight:300;color:#14110E" />
+            </label>
+            <label style="display:flex;flexDirection:column;gap:9px">
+              <span style="fontSize:10px;letterSpacing:.2em;textTransform:uppercase;color:#6B6259">Email (optional)</span>
+              <input name="email" type="email" placeholder="you@email.com" style="border:1px solid rgba(20,17,14,.18);background:#fff;padding:15px 16px;fontSize:14.5px;fontWeight:300;color:#14110E" />
+            </label>
+          </div>
+          <label style="display:flex;flexDirection:column;gap:9px">
+            <span style="fontSize:10px;letterSpacing:.2em;textTransform:uppercase;color:#6B6259">Full delivery address *</span>
+            <textarea name="address" rows="3" placeholder="House / flat, street, area, landmark" style="border:1px solid rgba(20,17,14,.18);background:#fff;padding:15px 16px;fontSize:14.5px;fontWeight:300;color:#14110E;resize:vertical"></textarea>
+          </label>
+          <label style="display:flex;flexDirection:column;gap:9px">
+            <span style="fontSize:10px;letterSpacing:.2em;textTransform:uppercase;color:#6B6259">Order notes (optional)</span>
+            <textarea name="notes" rows="2" placeholder="Delivery timing, gift note, anything else" style="border:1px solid rgba(20,17,14,.18);background:#fff;padding:15px 16px;fontSize:14.5px;fontWeight:300;color:#14110E;resize:vertical"></textarea>
+          </label>
+
+          <div style="background:#F6F1E9;border:1px solid rgba(20,17,14,.10);padding:20px 22px;display:flex;gap:14px;alignItems:flex-start">
+            <span style="width:9px;height:9px;background:#A8813A;borderRadius:9px;marginTop:6px;flexShrink:0"></span>
+            <div>
+              <p style="fontSize:12px;letterSpacing:.16em;textTransform:uppercase;color:#14110E;margin:0 0 6px">Cash on delivery</p>
+              <p style="fontSize:13.5px;lineHeight:1.7;fontWeight:300;color:#6B6259;margin:0">Pay the courier in cash when the parcel reaches you. Please keep the exact amount ready.</p>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+            <p style="fontSize:13px;color:#9C3B2E;margin:0;letterSpacing:.02em">{{ error }}</p>
+          </sc-if>
+
+          <button type="submit" disabled="{{ busy }}" style="border:0;background:#14110E;color:#FBF8F3;padding:22px;fontFamily:inherit;fontSize:11.5px;letterSpacing:.22em;textTransform:uppercase;cursor:pointer" style-hover="background:#A8813A">{{ submitLabel }}</button>
+
+          <p style="fontSize:12.5px;lineHeight:1.7;fontWeight:300;color:#8A8177;margin:0">Prefer to talk? <a href="{{ waLink }}" target="_blank" rel="noopener" style="color:#A8813A;borderBottom:1px solid #D8BC7A">Send this order on WhatsApp</a> instead.</p>
+        </form>
+
+        <sc-if value="{{ fallback }}" hint-placeholder-val="{{ false }}">
+          <div style="marginTop:34px;border:1px solid #D8BC7A;background:#FBF6EC;padding:28px 30px;maxWidth:560px">
+            <p style="fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#A8813A;margin:0 0 12px">One last step</p>
+            <p style="fontSize:14.5px;lineHeight:1.75;fontWeight:300;color:#4A4239;margin:0 0 22px">Your order <strong style="fontWeight:400">{{ orderId }}</strong> is ready but couldn't be emailed automatically. Send it to us with one tap — both options carry the full details.</p>
+            <div style="display:flex;gap:14px;flexWrap:wrap">
+              <a href="{{ fallbackWa }}" target="_blank" rel="noopener" style="background:#14110E;color:#FBF8F3;padding:16px 30px;fontSize:11px;letterSpacing:.2em;textTransform:uppercase" style-hover="background:#A8813A;color:#fff">Send on WhatsApp</a>
+              <a href="{{ fallbackMail }}" style="border:1px solid rgba(20,17,14,.22);padding:16px 30px;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#4A4239" style-hover="borderColor:#A8813A;color:#A8813A">Send by email</a>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <aside style="border:1px solid rgba(20,17,14,.10);background:#fff;position:sticky;top:110px">
+        <div style="padding:26px 24px;borderBottom:1px solid rgba(20,17,14,.10)">
+          <p style="fontSize:11px;letterSpacing:.22em;textTransform:uppercase;margin:0">Your order</p>
+        </div>
+        <div style="padding:6px 24px">
+          <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:52px 0;textAlign:center">
+              <p style="fontFamily:'Cormorant Garamond',serif;fontSize:22px;margin:0 0 16px">Your bag is empty.</p>
+              <a href="Shop.dc.html" style="fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#A8813A;borderBottom:1px solid #D8BC7A;paddingBottom:3px">Browse the collection</a>
+            </div>
+          </sc-if>
+          <sc-for list="{{ lines }}" as="l" hint-placeholder-count="2">
+            <div style="display:grid;gridTemplateColumns:70px 1fr;gap:16px;padding:22px 0;borderBottom:1px solid rgba(20,17,14,.08)">
+              <div style="background:#F2ECE0;aspectRatio:1;overflow:hidden">
+                <img src="{{ l.img }}" alt="{{ l.name }}" style="width:100%;height:100%;objectFit:cover" />
+              </div>
+              <div>
+                <p style="fontFamily:'Cormorant Garamond',serif;fontSize:18px;margin:0 0 3px;lineHeight:1.25">{{ l.name }}</p>
+                <p style="fontSize:10px;letterSpacing:.14em;textTransform:uppercase;color:#8A8177;margin:0 0 10px">{{ l.size }}</p>
+                <div style="display:flex;alignItems:center;justifyContent:space-between;gap:10px">
+                  <div style="display:flex;alignItems:center;border:1px solid rgba(20,17,14,.16)">
+                    <button type="button" data-sku="{{ l.sku }}" onClick="{{ dec }}" style="width:28px;height:28px;border:0;background:transparent;cursor:pointer;fontFamily:inherit;color:#14110E">–</button>
+                    <span style="width:24px;textAlign:center;fontSize:12px">{{ l.qty }}</span>
+                    <button type="button" data-sku="{{ l.sku }}" onClick="{{ inc }}" style="width:28px;height:28px;border:0;background:transparent;cursor:pointer;fontFamily:inherit;color:#14110E">+</button>
+                  </div>
+                  <span style="fontSize:13px">{{ l.lineTotalText }}</span>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:24px 24px 30px;background:#F6F1E9;borderTop:1px solid rgba(20,17,14,.10)">
+          <div style="display:flex;justifyContent:space-between;fontSize:13px;fontWeight:300;color:#4A4239;marginBottom:9px">
+            <span>Subtotal</span><span>{{ subtotalText }}</span>
+          </div>
+          <div style="display:flex;justifyContent:space-between;fontSize:13px;fontWeight:300;color:#4A4239;marginBottom:16px">
+            <span>Delivery</span><span>{{ shippingText }}</span>
+          </div>
+          <div style="display:flex;justifyContent:space-between;alignItems:baseline;borderTop:1px solid rgba(20,17,14,.14);paddingTop:16px">
+            <span style="fontSize:11px;letterSpacing:.2em;textTransform:uppercase">Total</span>
+            <span style="fontFamily:'Cormorant Garamond',serif;fontSize:28px">{{ totalText }}</span>
+          </div>
+          <p style="fontSize:11px;letterSpacing:.1em;color:#8A8177;margin:16px 0 0">{{ shipNote }}</p>
+        </div>
+      </aside>
+    </section>
+  </sc-if>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tick: 0, busy: false, done: false, error: '', fallback: false, order: null };
+
+  componentDidMount() {
+    this._on = () => this.setState(s => ({ tick: s.tick + 1 }));
+    window.addEventListener('iconix-cart', this._on);
+    window.addEventListener('iconix-ready', this._on);
+    if (!window.ICONIX) setTimeout(this._on, 120);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('iconix-cart', this._on);
+    window.removeEventListener('iconix-ready', this._on);
+  }
+
+  buildOrder(fd) {
+    const S = window.ICONIX, l = S.lines(), t = S.totals();
+    return {
+      order_id: this.state.order ? this.state.order.order_id : S.orderId(),
+      customer_name: (fd.get('customer_name') || '').trim(),
+      phone: (fd.get('phone') || '').trim(),
+      email: (fd.get('email') || '').trim(),
+      city: (fd.get('city') || '').trim(),
+      address: (fd.get('address') || '').trim(),
+      notes: (fd.get('notes') || '').trim(),
+      items_text: S.itemsText(l),
+      subtotal: t.subtotalText,
+      delivery: t.shippingText,
+      total: t.totalText,
+      payment: S.CONFIG.payment,
+      to_email: S.CONFIG.orderEmail
+    };
+  }
+
+  renderVals() {
+    const S = window.ICONIX;
+    const lines = S ? S.lines() : [];
+    const t = S ? S.totals() : { subtotalText: '—', shippingText: '—', totalText: '—', toFreeShipping: 0 };
+    const o = this.state.order;
+    return {
+      done: this.state.done,
+      showForm: !this.state.done,
+      lines,
+      empty: lines.length === 0,
+      subtotalText: t.subtotalText,
+      shippingText: t.shippingText,
+      totalText: t.totalText,
+      shipNote: t.toFreeShipping > 0 && lines.length
+        ? 'Add ' + S.fmt(t.toFreeShipping) + ' more and delivery is free.'
+        : 'Cash on delivery · 3–5 working days',
+      orderId: o ? o.order_id : '',
+      busy: this.state.busy,
+      submitLabel: this.state.busy ? 'Placing order…' : 'Place order · ' + t.totalText,
+      hasError: !!this.state.error,
+      error: this.state.error,
+      fallback: this.state.fallback,
+      fallbackWa: o && S ? S.whatsappLink(S.orderText(o)) : '#',
+      fallbackMail: o && S ? S.mailtoLink(o) : '#',
+      waLink: S ? S.whatsappLink('Hello Iconix Beauty, I would like to place an order.') : '#',
+      formRef: (el) => { this._form = el; },
+      inc: (e) => { const sku = e.currentTarget.dataset.sku; const c = S.read(); S.setQty(sku, (c[sku] || 0) + 1); },
+      dec: (e) => { const sku = e.currentTarget.dataset.sku; const c = S.read(); S.setQty(sku, (c[sku] || 0) - 1); },
+      submit: (e) => {
+        e.preventDefault();
+        const S2 = window.ICONIX;
+        if (!S2 || !this._form) return;
+        if (S2.lines().length === 0) { this.setState({ error: 'Your bag is empty — add a product first.' }); return; }
+        const fd = new FormData(this._form);
+        const order = this.buildOrder(fd);
+        if (!order.customer_name || !order.phone || !order.city || !order.address) {
+          this.setState({ error: 'Please fill in your name, WhatsApp number, city and full address.' });
+          return;
+        }
+        if (!/^[0-9+\-\s()]{10,}$/.test(order.phone)) {
+          this.setState({ error: 'That phone number looks incomplete — we need it to confirm your order.' });
+          return;
+        }
+        this.setState({ busy: true, error: '', order });
+        S2.sendOrder(order).then(() => {
+          S2.clear();
+          this.setState({ busy: false, done: true, fallback: false });
+        }).catch(() => {
+          this.setState({
+            busy: false,
+            fallback: true,
+            error: 'We could not email the order automatically. Please send it with one of the buttons below.'
+          });
+        });
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

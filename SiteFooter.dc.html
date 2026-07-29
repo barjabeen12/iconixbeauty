@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>a { text-decoration: none; }</style>
+</helmet>
+<footer style="fontFamily:'Jost',sans-serif;background:#14110E;color:#CFC6B8">
+  <div style="maxWidth:1240px;margin:0 auto;padding:clamp(56px,7vw,80px) clamp(20px,4vw,32px) 40px;display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:clamp(32px,4vw,56px)">
+    <div>
+      <p style="fontFamily:'Cormorant Garamond',serif;fontSize:30px;letterSpacing:.14em;color:#FBF8F3;margin:0">ICONIX</p>
+      <p style="fontSize:8.5px;letterSpacing:.42em;color:#C9A24A;margin:6px 0 22px">BEAUTY</p>
+      <p style="fontFamily:'Cormorant Garamond',serif;fontSize:21px;lineHeight:1.5;color:#CFC6B8;margin:0;maxWidth:260px">Be confident. Be iconic.</p>
+    </div>
+    <div>
+      <p style="fontSize:10px;letterSpacing:.24em;textTransform:uppercase;color:#8A8177;margin:0 0 20px">Shop</p>
+      <div style="display:flex;flexDirection:column;gap:12px;fontSize:13px">
+        <a href="Product.dc.html?p=tinted-sunscreen-spf50" style="color:#CFC6B8" style-hover="color:#C9A24A">Tinted Sunscreen SPF 50+</a>
+        <a href="Product.dc.html?p=brightening-facewash" style="color:#CFC6B8" style-hover="color:#C9A24A">Brightening Facewash</a>
+        <a href="Product.dc.html?p=anti-aging-night-cream" style="color:#CFC6B8" style-hover="color:#C9A24A">Anti Aging Night Cream</a>
+        <a href="Product.dc.html?p=the-iconix-ritual" style="color:#CFC6B8" style-hover="color:#C9A24A">The Iconix Ritual</a>
+      </div>
+    </div>
+    <div>
+      <p style="fontSize:10px;letterSpacing:.24em;textTransform:uppercase;color:#8A8177;margin:0 0 20px">Help</p>
+      <div style="display:flex;flexDirection:column;gap:12px;fontSize:13px">
+        <a href="Home.dc.html#faq" style="color:#CFC6B8" style-hover="color:#C9A24A">Shipping &amp; delivery</a>
+        <a href="Home.dc.html#faq" style="color:#CFC6B8" style-hover="color:#C9A24A">Returns</a>
+        <a href="Home.dc.html#faq" style="color:#CFC6B8" style-hover="color:#C9A24A">Authenticity</a>
+        <a href="Checkout.dc.html" style="color:#CFC6B8" style-hover="color:#C9A24A">Track your order</a>
+      </div>
+    </div>
+    <div>
+      <p style="fontSize:10px;letterSpacing:.24em;textTransform:uppercase;color:#8A8177;margin:0 0 20px">Contact</p>
+      <div style="display:flex;flexDirection:column;gap:12px;fontSize:13px">
+        <a href="{{ waLink }}" target="_blank" rel="noopener" style="color:#CFC6B8" style-hover="color:#C9A24A">WhatsApp us</a>
+        <a href="{{ mailLink }}" style="color:#CFC6B8" style-hover="color:#C9A24A">{{ email }}</a>
+        <span style="color:#8A8177">Cash on delivery · Pakistan</span>
+      </div>
+    </div>
+  </div>
+  <div style="borderTop:1px solid rgba(251,248,243,.10)">
+    <div style="maxWidth:1240px;margin:0 auto;padding:24px clamp(20px,4vw,32px);display:flex;justifyContent:space-between;flexWrap:wrap;gap:14px;fontSize:10.5px;letterSpacing:.14em;textTransform:uppercase;color:#6B6259">
+      <span>© 2026 Iconix Beauty</span>
+      <span>Cruelty free · Non toxic · Dermatologically recommended</span>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:420}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.ICONIX) window.addEventListener('iconix-ready', this._on = () => this.forceUpdate());
+  }
+  componentWillUnmount() { window.removeEventListener('iconix-ready', this._on); }
+  renderVals() {
+    const S = window.ICONIX;
+    const email = S ? S.CONFIG.orderEmail : 'orders@iconixbeauty.pk';
+    return {
+      email,
+      mailLink: 'mailto:' + email,
+      waLink: S ? S.whatsappLink('Hello Iconix Beauty, I have a question.') : '#'
+    };
+  }
+}
+
+</script>
+</body>
+</html>
