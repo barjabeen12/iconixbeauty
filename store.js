@@ -24,7 +24,7 @@
 
     orderEmail: 'orders@iconixbeauty.pk',   // <-- your inbox
     whatsapp: '923218583514',              // <-- digits only, with country code
-    instagram: '',
+    instagram: 'https://instagram.com/iconixbeautyofficial',
     city: 'Pakistan',
 
     currency: 'Rs',
