@@ -1,8 +1,11 @@
 Iconix Beauty — GitHub Pages deployment
 
 1. Create a new repository on GitHub (e.g. iconix-store).
-2. Upload EVERYTHING inside this folder to the repository root
-   (index.html must sit at the top level, not inside a subfolder).
+2. Upload EVERYTHING INSIDE this folder to the repository root — the files
+   themselves, not the folder. index.html must sit at the top level.
+   Pages: index.html (home), shop.html, product.html, checkout.html.
+   SiteHeader.dc.html and SiteFooter.dc.html are shared partials — keep
+   their names exactly as they are.
 3. Repo → Settings → Pages → Source: "Deploy from a branch",
    Branch: main, Folder: / (root) → Save.
 4. Wait ~1 minute. Your site is live at
@@ -18,3 +21,19 @@ customer a one-tap "send on WhatsApp / send by email" with the full order.
 
 Custom domain: Settings → Pages → Custom domain, then add a CNAME record
 at your registrar pointing to <your-username>.github.io.
+
+IMPORTANT — upload ALL 8 files at the root, including the two with
+capital letters. If SiteHeader.dc.html or SiteFooter.dc.html are missing,
+the top of the page shows an empty grey band instead of the menu.
+
+Root must contain:
+  index.html
+  shop.html
+  product.html
+  checkout.html
+  SiteHeader.dc.html      <-- the menu + shopping bag
+  SiteFooter.dc.html      <-- the footer
+  store.js
+  support.js
+  .nojekyll
+  assets/                 (folder with all the images)

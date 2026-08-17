@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shop — Iconix Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="store.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFCF7; color: #3B2F22; }
+  a { color: #3B2F22; text-decoration: none; }
+  a:hover { color: #B8862F; }
+  .ib-rail::-webkit-scrollbar { display: none; }
+  @keyframes ib-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</helmet>
+<div style="fontFamily:'Jost',sans-serif;background:#FFFCF7;color:#3B2F22">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <section data-screen-label="Shop header" style="maxWidth:1240px;margin:0 auto;padding:clamp(52px,7vw,88px) clamp(20px,4vw,32px) clamp(36px,5vw,56px);textAlign:center">
+    <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#B8862F;margin:0 0 22px">The collection</p>
+    <h1 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(36px,6.5vw,56px);lineHeight:1.08;margin:0 0 22px;color:#2F2519">Everything we make</h1>
+    <p style="fontSize:15.5px;lineHeight:1.75;fontWeight:300;color:#77685A;margin:0 auto;maxWidth:470px;textWrap:pretty">Three formulas and three bundles. Cash on delivery anywhere in Pakistan, free over Rs 3,000.</p>
+  </section>
+
+  <div style="overflow:hidden;background:#2F2519;padding:13px 0;marginBottom:clamp(30px,4vw,52px)">
+    <div style="display:flex;width:200%;animation:ib-marquee 26s linear infinite">
+      <span style="display:flex;gap:30px;width:50%;fontSize:9.5px;letterSpacing:.24em;textTransform:uppercase;color:#E3C179;whiteSpace:nowrap;paddingRight:30px">
+        <span>Cruelty free</span><span>·</span><span>Non toxic</span><span>·</span><span>Dermatologically recommended</span><span>·</span><span>Free delivery over Rs 3,000</span><span>·</span><span>Cash on delivery nationwide</span><span>·</span>
+      </span>
+      <span style="display:flex;gap:30px;width:50%;fontSize:9.5px;letterSpacing:.24em;textTransform:uppercase;color:#E3C179;whiteSpace:nowrap;paddingRight:30px">
+        <span>Cruelty free</span><span>·</span><span>Non toxic</span><span>·</span><span>Dermatologically recommended</span><span>·</span><span>Free delivery over Rs 3,000</span><span>·</span><span>Cash on delivery nationwide</span><span>·</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="ib-rail" style="display:flex;gap:10px;overflowX:auto;scrollbarWidth:none;maxWidth:1240px;margin:0 auto;padding:0 clamp(20px,4vw,32px) clamp(22px,3vw,34px);boxSizing:border-box">
+    <a href="shop.html" style="background:#2F2519;color:#fff;borderRadius:40px;padding:11px 20px;fontSize:10px;letterSpacing:.16em;textTransform:uppercase;whiteSpace:nowrap">All</a>
+    <a href="product.html?p=tinted-sunscreen-spf50" style="border:1px solid rgba(184,134,47,.35);borderRadius:40px;padding:11px 20px;fontSize:10px;letterSpacing:.16em;textTransform:uppercase;color:#5A4C3C;whiteSpace:nowrap" style-hover="borderColor:#B8862F;color:#B8862F">Sunblock</a>
+    <a href="product.html?p=brightening-facewash" style="border:1px solid rgba(184,134,47,.35);borderRadius:40px;padding:11px 20px;fontSize:10px;letterSpacing:.16em;textTransform:uppercase;color:#5A4C3C;whiteSpace:nowrap" style-hover="borderColor:#B8862F;color:#B8862F">Cleanse</a>
+    <a href="product.html?p=anti-aging-night-cream" style="border:1px solid rgba(184,134,47,.35);borderRadius:40px;padding:11px 20px;fontSize:10px;letterSpacing:.16em;textTransform:uppercase;color:#5A4C3C;whiteSpace:nowrap" style-hover="borderColor:#B8862F;color:#B8862F">Night care</a>
+    <a href="shop.html#offers" style="border:1px solid rgba(184,134,47,.35);borderRadius:40px;padding:11px 20px;fontSize:10px;letterSpacing:.16em;textTransform:uppercase;color:#5A4C3C;whiteSpace:nowrap" style-hover="borderColor:#B8862F;color:#B8862F">Offers</a>
+  </div>
+
+  <section style="maxWidth:1240px;margin:0 auto;padding:0 clamp(20px,4vw,32px) clamp(40px,5vw,64px)">
+    <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:clamp(18px,2.4vw,32px)">
+      <article style="background:#fff;border:1px solid rgba(184,134,47,.20);borderRadius:3px;overflow:hidden;display:flex;flexDirection:column;boxShadow:0 16px 38px rgba(184,134,47,.10)">
+        <a href="product.html?p=tinted-sunscreen-spf50" style="display:block;background:linear-gradient(160deg,#FFFDF8,#F7EEDF);aspectRatio:4/5;overflow:hidden;padding:clamp(12px,1.8vw,22px);boxSizing:border-box">
+          <img src="assets/sunscreen.png" alt="Tinted Sunblock SPF 50++" style="width:100%;height:100%;objectFit:contain" />
+        </a>
+        <div style="padding:clamp(24px,2.6vw,34px) clamp(20px,2.2vw,28px);display:flex;flexDirection:column;flex:1">
+          <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 14px">Bestseller</p>
+          <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;lineHeight:1.2;margin:0 0 10px;color:#2F2519"><a href="product.html?p=tinted-sunscreen-spf50">Tinted Sunblock SPF 50++</a></h2>
+          <p style="fontSize:13.5px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0 0 22px;flex:1">UVA/UVB, pollution and blue-light defence with a weightless tint. 50ml.</p>
+          <p style="fontSize:17px;margin:0 0 22px;letterSpacing:.04em;color:#2F2519">Rs 1,299</p>
+          <button type="button" data-sku="IB-TS-50" onClick="{{ addToCart }}" style="border:1px solid #B8862F;background:transparent;color:#B8862F;padding:16px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Add to bag</button>
+        </div>
+      </article>
+
+      <article style="background:#fff;border:1px solid rgba(184,134,47,.20);borderRadius:3px;overflow:hidden;display:flex;flexDirection:column;boxShadow:0 16px 38px rgba(184,134,47,.10)">
+        <a href="product.html?p=brightening-facewash" style="display:block;background:linear-gradient(160deg,#FFFDF8,#F7EEDF);aspectRatio:4/5;overflow:hidden;padding:clamp(12px,1.8vw,22px);boxSizing:border-box">
+          <img src="assets/facewash.png" alt="Brightening Face Wash" style="width:100%;height:100%;objectFit:contain" />
+        </a>
+        <div style="padding:clamp(24px,2.6vw,34px) clamp(20px,2.2vw,28px);display:flex;flexDirection:column;flex:1">
+          <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 14px">Vitamin C enriched</p>
+          <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;lineHeight:1.2;margin:0 0 10px;color:#2F2519"><a href="product.html?p=brightening-facewash">Brightening Face Wash</a></h2>
+          <p style="fontSize:13.5px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0 0 22px;flex:1">Gel-bead cleanser with glycolic acid for pores, oil and dullness. 150ml.</p>
+          <p style="fontSize:17px;margin:0 0 22px;letterSpacing:.04em;color:#2F2519">Rs 1,199</p>
+          <button type="button" data-sku="IB-FW-150" onClick="{{ addToCart }}" style="border:1px solid #B8862F;background:transparent;color:#B8862F;padding:16px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Add to bag</button>
+        </div>
+      </article>
+
+      <article style="background:#fff;border:1px solid rgba(184,134,47,.20);borderRadius:3px;overflow:hidden;display:flex;flexDirection:column;boxShadow:0 16px 38px rgba(184,134,47,.10)">
+        <a href="product.html?p=anti-aging-night-cream" style="display:block;background:linear-gradient(160deg,#FFFDF8,#F7EEDF);aspectRatio:4/5;overflow:hidden;padding:clamp(12px,1.8vw,22px);boxSizing:border-box">
+          <img src="assets/cream.png" alt="Anti Aging Night Cream" style="width:100%;height:100%;objectFit:contain" />
+        </a>
+        <div style="padding:clamp(24px,2.6vw,34px) clamp(20px,2.2vw,28px);display:flex;flexDirection:column;flex:1">
+          <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 14px">Overnight renewal</p>
+          <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;lineHeight:1.2;margin:0 0 10px;color:#2F2519"><a href="product.html?p=anti-aging-night-cream">Anti Aging Night Cream</a></h2>
+          <p style="fontSize:13.5px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0 0 22px;flex:1">Retinol, collagen, glutathione and niacinamide for firmness and fine lines. 50g.</p>
+          <p style="fontSize:17px;margin:0 0 22px;letterSpacing:.04em;color:#2F2519">Rs 1,499</p>
+          <button type="button" data-sku="IB-NC-50" onClick="{{ addToCart }}" style="border:1px solid #B8862F;background:transparent;color:#B8862F;padding:16px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Add to bag</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="offers" data-screen-label="Offers" style="background:linear-gradient(180deg,#FFFCF7,#FBF4E8);borderTop:1px solid rgba(184,134,47,.18);borderBottom:1px solid rgba(184,134,47,.18)">
+    <div style="maxWidth:1240px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,4vw,32px)">
+      <div style="textAlign:center;marginBottom:clamp(36px,5vw,56px)">
+        <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#B8862F;margin:0 0 18px">Special offers</p>
+        <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,5vw,44px);lineHeight:1.1;margin:0 0 16px;color:#2F2519">Buy together, pay less</h2>
+        <p style="fontSize:15px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0 auto;maxWidth:440px">Every bundle ships free — all three are over the Rs 3,000 delivery threshold.</p>
+      </div>
+      <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:clamp(18px,2.4vw,32px)">
+        <article style="background:#fff;border:1px solid rgba(184,134,47,.22);borderRadius:3px;overflow:hidden;display:flex;flexDirection:column;boxShadow:0 18px 40px rgba(184,134,47,.12)">
+          <a href="product.html?p=night-cream-facewash-duo" style="display:block;background:linear-gradient(160deg,#FFFDF8,#F7EEDF);aspectRatio:1;overflow:hidden;position:relative;padding:clamp(12px,1.8vw,22px);boxSizing:border-box">
+            <img src="assets/bundle-cream-facewash.png" alt="Night Cream and Face Wash bundle" style="width:100%;height:100%;objectFit:contain" />
+            <span style="position:absolute;top:16px;left:16px;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;fontSize:9.5px;letterSpacing:.18em;textTransform:uppercase;padding:8px 14px;borderRadius:2px">Save Rs 199</span>
+          </a>
+          <div style="padding:clamp(24px,2.6vw,32px) clamp(20px,2.2vw,28px);display:flex;flexDirection:column;flex:1">
+            <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 12px">Special Offer 1</p>
+            <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;lineHeight:1.2;margin:0 0 10px;color:#2F2519"><a href="product.html?p=night-cream-facewash-duo">Night Cream + Face Wash</a></h3>
+            <p style="fontSize:13.5px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0 0 22px;flex:1">The evening pair — a brightening Vitamin C cleanse, then overnight renewal.</p>
+            <div style="display:flex;alignItems:baseline;gap:12px;marginBottom:22px">
+              <span style="fontFamily:'Cormorant Garamond',serif;fontSize:30px;color:#2F2519">Rs 2,499</span>
+              <span style="fontSize:13.5px;color:#A2937F;textDecoration:line-through">Rs 2,698</span>
+            </div>
+            <button type="button" data-sku="IB-DUO-NCFW" onClick="{{ addToCart }}" style="width:100%;border:0;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;padding:17px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#E0BC6E,#C0912F)">Add this offer</button>
+          </div>
+        </article>
+
+        <article style="background:#fff;border:1px solid rgba(184,134,47,.22);borderRadius:3px;overflow:hidden;display:flex;flexDirection:column;boxShadow:0 18px 40px rgba(184,134,47,.12)">
+          <a href="product.html?p=sunblock-facewash-duo" style="display:block;background:linear-gradient(160deg,#FFFDF8,#F7EEDF);aspectRatio:1;overflow:hidden;position:relative;padding:clamp(12px,1.8vw,22px);boxSizing:border-box">
+            <img src="assets/bundle-sun-facewash.png" alt="Tinted Sunblock and Face Wash bundle" style="width:100%;height:100%;objectFit:contain" />
+            <span style="position:absolute;top:16px;left:16px;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;fontSize:9.5px;letterSpacing:.18em;textTransform:uppercase;padding:8px 14px;borderRadius:2px">Save Rs 199</span>
+          </a>
+          <div style="padding:clamp(24px,2.6vw,32px) clamp(20px,2.2vw,28px);display:flex;flexDirection:column;flex:1">
+            <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 12px">Special Offer 2</p>
+            <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;lineHeight:1.2;margin:0 0 10px;color:#2F2519"><a href="product.html?p=sunblock-facewash-duo">Tinted Sunblock + Face Wash</a></h3>
+            <p style="fontSize:13.5px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0 0 22px;flex:1">The morning pair — a Vitamin C cleanse, then SPF 50++ tinted protection.</p>
+            <div style="display:flex;alignItems:baseline;gap:12px;marginBottom:22px">
+              <span style="fontFamily:'Cormorant Garamond',serif;fontSize:30px;color:#2F2519">Rs 2,299</span>
+              <span style="fontSize:13.5px;color:#A2937F;textDecoration:line-through">Rs 2,498</span>
+            </div>
+            <button type="button" data-sku="IB-DUO-TSFW" onClick="{{ addToCart }}" style="width:100%;border:0;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;padding:17px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#E0BC6E,#C0912F)">Add this offer</button>
+          </div>
+        </article>
+
+        <article style="background:linear-gradient(150deg,#2F2519,#54401F);border:1px solid #2F2519;borderRadius:3px;overflow:hidden;display:flex;flexDirection:column;boxShadow:0 26px 56px rgba(47,37,25,.28);color:#F3EADA">
+          <a href="product.html?p=three-product-combo" style="display:block;background:rgba(255,255,255,.06);aspectRatio:1;overflow:hidden;position:relative;padding:clamp(12px,1.8vw,22px);boxSizing:border-box;minHeight:0">
+            <img src="assets/trio.png" alt="All three Iconix Beauty products" style="width:100%;height:100%;objectFit:contain" />
+            <span style="position:absolute;top:16px;left:16px;background:linear-gradient(135deg,#E3C179,#C89340);color:#2F2519;fontSize:9.5px;letterSpacing:.18em;textTransform:uppercase;padding:8px 14px;borderRadius:2px">Best value</span>
+          </a>
+          <div style="padding:clamp(24px,2.6vw,32px) clamp(20px,2.2vw,28px);display:flex;flexDirection:column;flex:1">
+            <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#E3C179;margin:0 0 12px">3 Products Combo</p>
+            <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;lineHeight:1.2;margin:0 0 10px;color:#fff"><a href="product.html?p=three-product-combo" style="color:#fff" style-hover="color:#E3C179">The complete routine</a></h3>
+            <p style="fontSize:13.5px;lineHeight:1.7;fontWeight:300;color:#C6B79F;margin:0 0 22px;flex:1">Face Wash, Tinted Sunblock SPF 50++ and Anti Aging Night Cream — morning and night, covered.</p>
+            <div style="display:flex;alignItems:baseline;gap:12px;marginBottom:22px">
+              <span style="fontFamily:'Cormorant Garamond',serif;fontSize:30px;color:#fff">Rs 3,799</span>
+              <span style="fontSize:13.5px;color:#B5A791;textDecoration:line-through">Rs 3,997</span>
+            </div>
+            <button type="button" data-sku="IB-SET-3" onClick="{{ addToCart }}" style="width:100%;border:0;background:linear-gradient(135deg,#E3C179,#C89340);color:#2F2519;padding:17px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#F0D69B,#D6A24C)">Add the combo</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#FFFCF7">
+    <div style="maxWidth:1240px;margin:0 auto;padding:clamp(44px,5vw,64px) clamp(20px,4vw,32px);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(28px,3.4vw,40px)">
+      <div>
+        <p style="fontSize:10px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 12px">Cash on delivery</p>
+        <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0">Pay the courier when your parcel arrives. Nothing is charged online.</p>
+      </div>
+      <div>
+        <p style="fontSize:10px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 12px">3–5 day delivery</p>
+        <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0">Nationwide, Rs 250 flat. Free on every order over Rs 3,000.</p>
+      </div>
+      <div>
+        <p style="fontSize:10px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 12px">Order on WhatsApp</p>
+        <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0">Prefer to talk? <a href="{{ waLink }}" target="_blank" rel="noopener" style="color:#B8862F;borderBottom:1px solid rgba(184,134,47,.5)">Message us</a> and we'll place it for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.ICONIX) window.addEventListener('iconix-ready', this._on = () => this.forceUpdate());
+  }
+  componentWillUnmount() { window.removeEventListener('iconix-ready', this._on); }
+  renderVals() {
+    const S = window.ICONIX;
+    return {
+      waLink: S ? S.whatsappLink('Hello Iconix Beauty, I would like to place an order.') : '#',
+      addToCart: (e) => {
+        const sku = e.currentTarget.dataset.sku;
+        if (!window.ICONIX) return;
+        window.ICONIX.add(sku, 1);
+        window.dispatchEvent(new Event('iconix-open-cart'));
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

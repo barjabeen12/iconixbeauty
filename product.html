@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Iconix Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="store.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFCF7; color: #2F2519; }
+  a { color: #2F2519; text-decoration: none; }
+  a:hover { color: #B8862F; }
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; cursor: pointer; }
+</style>
+</helmet>
+<div style="fontFamily:'Jost',sans-serif;background:#FFFCF7;color:#2F2519">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <div style="maxWidth:1240px;margin:0 auto;padding:26px clamp(20px,4vw,32px);fontSize:10.5px;letterSpacing:.16em;textTransform:uppercase;color:#8E7F6D">
+    <a href="index.html" style="color:#8E7F6D">Home</a> &nbsp;/&nbsp; <a href="shop.html" style="color:#8E7F6D">Shop</a> &nbsp;/&nbsp; <span style="color:#5A4C3C">{{ name }}</span>
+  </div>
+
+  <section data-screen-label="Product" style="maxWidth:1240px;margin:0 auto;padding:0 clamp(20px,4vw,32px) clamp(60px,8vw,100px);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(36px,5vw,72px);alignItems:start">
+    <div>
+      <div style="background:linear-gradient(160deg,#FFFDF8,#F7EEDF);aspectRatio:1;overflow:hidden;border:1px solid rgba(184,134,47,.20);borderRadius:3px;boxShadow:0 18px 40px rgba(184,134,47,.10);padding:clamp(16px,2.4vw,34px);boxSizing:border-box">
+        <img src="{{ heroImg }}" alt="{{ name }}" style="width:100%;height:100%;objectFit:contain" />
+      </div>
+      <div style="display:flex;gap:14px;marginTop:14px;flexWrap:wrap">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="3">
+          <button type="button" data-src="{{ g.src }}" onClick="{{ pick }}" style="width:88px;height:88px;padding:6px;background:linear-gradient(160deg,#FFFDF8,#F7EEDF);border:1px solid {{ g.border }};borderRadius:2px;cursor:pointer;overflow:hidden;boxSizing:border-box">
+            <img src="{{ g.src }}" alt="" style="width:100%;height:100%;objectFit:contain;display:block" />
+          </button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="paddingTop:8px">
+      <p style="fontSize:10px;letterSpacing:.26em;textTransform:uppercase;color:#B8862F;margin:0 0 18px">{{ badge }}</p>
+      <h1 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(34px,6vw,48px);lineHeight:1.1;margin:0 0 14px;color:#2F2519">{{ name }}</h1>
+      <p style="fontSize:11px;letterSpacing:.18em;textTransform:uppercase;color:#8E7F6D;margin:0 0 30px">{{ sub }} &nbsp;·&nbsp; {{ size }}</p>
+      <p style="fontSize:16px;lineHeight:1.75;fontWeight:300;color:#5A4C3C;margin:0 0 34px;maxWidth:460px;textWrap:pretty">{{ short }}</p>
+
+      <div style="display:flex;alignItems:baseline;gap:14px;marginBottom:34px">
+        <span style="fontFamily:'Cormorant Garamond',serif;fontSize:36px">{{ priceText }}</span>
+        <sc-if value="{{ hasCompare }}" hint-placeholder-val="{{ false }}">
+          <span style="fontSize:15px;color:#8E7F6D;textDecoration:line-through">{{ compareText }}</span>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;gap:14px;flexWrap:wrap;alignItems:stretch;marginBottom:16px">
+        <div style="display:flex;alignItems:center;border:1px solid rgba(59,47,34,.18)">
+          <button type="button" onClick="{{ dec }}" style="width:46px;height:56px;border:0;background:transparent;cursor:pointer;fontFamily:inherit;fontSize:16px;color:#2F2519">–</button>
+          <span style="width:34px;textAlign:center;fontSize:14px">{{ qty }}</span>
+          <button type="button" onClick="{{ inc }}" style="width:46px;height:56px;border:0;background:transparent;cursor:pointer;fontFamily:inherit;fontSize:16px;color:#2F2519">+</button>
+        </div>
+        <button type="button" onClick="{{ addToCart }}" style="flex:1;minWidth:220px;border:0;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;padding:0 40px;height:56px;fontFamily:inherit;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:linear-gradient(135deg,#E0BC6E,#C0912F)">Add to bag</button>
+      </div>
+      <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:flex;alignItems:center;justifyContent:center;height:56px;border:1px solid rgba(59,47,34,.18);fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;color:#5A4C3C;marginBottom:30px" style-hover="borderColor:#B8862F;color:#B8862F">Order on WhatsApp</a>
+
+      <div style="display:flex;gap:26px;flexWrap:wrap;fontSize:10.5px;letterSpacing:.16em;textTransform:uppercase;color:#8E7F6D;marginBottom:44px">
+        <span>Cash on delivery</span><span>3–5 days</span><span>Free over Rs 3,000</span>
+      </div>
+
+      <details open="" style="borderTop:1px solid rgba(184,134,47,.25)">
+        <summary style="padding:22px 0;fontSize:12px;letterSpacing:.2em;textTransform:uppercase;display:flex;justifyContent:space-between;alignItems:center">Description<span style="color:#B8862F">+</span></summary>
+        <p style="fontSize:14.5px;lineHeight:1.8;fontWeight:300;color:#77685A;margin:0 0 26px">{{ description }}</p>
+      </details>
+      <details style="borderTop:1px solid rgba(184,134,47,.25)">
+        <summary style="padding:22px 0;fontSize:12px;letterSpacing:.2em;textTransform:uppercase;display:flex;justifyContent:space-between;alignItems:center">Key benefits<span style="color:#B8862F">+</span></summary>
+        <ul style="margin:0 0 26px;padding:0;listStyle:none;display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(160px,100%),1fr));gap:10px 24px">
+          <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
+            <li style="fontSize:14px;fontWeight:300;color:#77685A;borderTop:1px solid rgba(59,47,34,.08);paddingTop:10px">{{ b.text }}</li>
+          </sc-for>
+        </ul>
+      </details>
+      <details style="borderTop:1px solid rgba(184,134,47,.25)">
+        <summary style="padding:22px 0;fontSize:12px;letterSpacing:.2em;textTransform:uppercase;display:flex;justifyContent:space-between;alignItems:center">How to use<span style="color:#B8862F">+</span></summary>
+        <div style="display:flex;flexDirection:column;gap:18px;margin:0 0 26px">
+          <sc-for list="{{ howto }}" as="h" hint-placeholder-count="3">
+            <div>
+              <p style="fontFamily:'Cormorant Garamond',serif;fontSize:20px;margin:0 0 5px">{{ h.title }}</p>
+              <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#77685A;margin:0">{{ h.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </details>
+      <details style="borderTop:1px solid rgba(184,134,47,.25);borderBottom:1px solid rgba(184,134,47,.25)">
+        <summary style="padding:22px 0;fontSize:12px;letterSpacing:.2em;textTransform:uppercase;display:flex;justifyContent:space-between;alignItems:center">Ingredients<span style="color:#B8862F">+</span></summary>
+        <p style="fontSize:13px;lineHeight:1.8;fontWeight:300;color:#77685A;margin:0 0 26px">{{ ingredients }}</p>
+      </details>
+    </div>
+  </section>
+
+  <section style="borderTop:1px solid rgba(184,134,47,.18);background:linear-gradient(180deg,#FFFCF7,#FBF4E8)">
+    <div style="maxWidth:1240px;margin:0 auto;padding:clamp(56px,7vw,90px) clamp(20px,4vw,32px)">
+      <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#B8862F;margin:0 0 18px">Complete the ritual</p>
+      <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(28px,4.6vw,38px);lineHeight:1.1;margin:0 0 48px">Pairs well with</h2>
+      <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:32px">
+        <sc-for list="{{ others }}" as="o" hint-placeholder-count="3">
+          <article style="background:#fff;border:1px solid rgba(184,134,47,.20);borderRadius:3px;overflow:hidden;display:flex;flexDirection:column;boxShadow:0 14px 32px rgba(184,134,47,.10)">
+            <a href="{{ o.href }}" style="display:block;background:#FAF3E7;aspectRatio:4/3;overflow:hidden">
+              <img src="{{ o.img }}" alt="{{ o.name }}" style="width:100%;height:100%;objectFit:contain" />
+            </a>
+            <div style="padding:26px 26px 24px;display:flex;flexDirection:column;flex:1">
+              <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:22px;lineHeight:1.2;margin:0 0 8px"><a href="{{ o.href }}">{{ o.name }}</a></h3>
+              <p style="fontSize:13px;lineHeight:1.65;fontWeight:300;color:#77685A;margin:0 0 18px;flex:1">{{ o.short }}</p>
+              <div style="display:flex;alignItems:center;justifyContent:space-between">
+                <span style="fontSize:14.5px">{{ o.priceText }}</span>
+                <button type="button" data-sku="{{ o.sku }}" onClick="{{ addOther }}" style="border:1px solid #B8862F;background:transparent;color:#B8862F;padding:11px 18px;fontFamily:inherit;fontSize:10px;letterSpacing:.18em;textTransform:uppercase;cursor:pointer" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Add</button>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { qty: 1, imgIndex: 0, tick: 0 };
+
+  componentDidMount() {
+    if (!window.ICONIX) window.addEventListener('iconix-ready', this._on = () => this.setState(s => ({ tick: s.tick + 1 })));
+    const p = this.product();
+    if (p) document.title = p.name + ' — Iconix Beauty';
+  }
+  componentWillUnmount() { window.removeEventListener('iconix-ready', this._on); }
+
+  slug() {
+    const m = /[?&]p=([^&#]+)/.exec(window.location.search);
+    return m ? decodeURIComponent(m[1]) : 'tinted-sunscreen-spf50';
+  }
+  product() {
+    const S = window.ICONIX;
+    if (!S) return null;
+    return S.bySlug(this.slug()) || S.PRODUCTS[2];
+  }
+
+  renderVals() {
+    const S = window.ICONIX, p = this.product();
+    if (!p) return { qty: this.state.qty };
+    const gal = p.gallery && p.gallery.length ? p.gallery : [p.img];
+    const idx = Math.min(this.state.imgIndex, gal.length - 1);
+    return {
+      name: p.name, sub: p.sub, size: p.size, badge: p.badge, short: p.short,
+      description: p.description, ingredients: p.ingredients,
+      priceText: S.fmt(p.price),
+      hasCompare: !!p.compareAt,
+      compareText: p.compareAt ? S.fmt(p.compareAt) : '',
+      heroImg: gal[idx],
+      gallery: gal.map((src, i) => ({ src, border: i === idx ? '#B8862F' : 'rgba(59,47,34,.10)' })),
+      benefits: (p.benefits || []).map(text => ({ text })),
+      howto: (p.howto || []).map(h => ({ title: h[0], body: h[1] })),
+      qty: this.state.qty,
+      waLink: S.whatsappLink('Hello Iconix Beauty, I would like to order ' + this.state.qty + ' x ' + p.name + ' (' + p.size + ') — ' + S.fmt(p.price * this.state.qty) + '.'),
+      others: S.PRODUCTS.filter(x => x.sku !== p.sku).slice(0, 3).map(x => ({
+        sku: x.sku, name: x.name, short: x.short, img: x.img,
+        priceText: S.fmt(x.price), href: 'product.html?p=' + x.slug
+      })),
+      pick: (e) => {
+        const src = e.currentTarget.dataset.src;
+        this.setState({ imgIndex: Math.max(0, gal.indexOf(src)) });
+      },
+      inc: () => this.setState(s => ({ qty: s.qty + 1 })),
+      dec: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
+      addToCart: () => { S.add(p.sku, this.state.qty); window.dispatchEvent(new Event('iconix-open-cart')); },
+      addOther: (e) => { S.add(e.currentTarget.dataset.sku, 1); window.dispatchEvent(new Event('iconix-open-cart')); }
+    };
+  }
+}
+
+</script>
+</body>
+</html>
