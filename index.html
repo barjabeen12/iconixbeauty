@@ -22,6 +22,11 @@
   summary { list-style: none; cursor: pointer; }
   .ib-rail::-webkit-scrollbar { display: none; }
   @keyframes ib-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ib-hero-mobile { display: none; }
+  @media (max-width: 900px) {
+    .ib-hero-desktop { display: none !important; }
+    .ib-hero-mobile { display: block !important; }
+  }
 </style>
 </helmet>
 <div style="fontFamily:'Jost',sans-serif;background:#FFFCF7;color:#3B2F22;overflowX:hidden">
@@ -43,7 +48,7 @@
               <div style="padding:16px 16px 18px;display:flex;flexDirection:column;flex:1">
                 <p style="fontSize:9px;letterSpacing:.2em;textTransform:uppercase;color:#B8862F;margin:0 0 8px">Offer 1</p>
                 <p style="fontFamily:'Cormorant Garamond',serif;fontSize:19px;lineHeight:1.25;margin:0 0 12px;color:#2F2519;flex:1">Night Cream + Face Wash</p>
-                <p style="margin:0 0 12px;display:flex;alignItems:baseline;gap:8px"><span style="fontSize:17px;color:#2F2519">Rs 2,499</span><span style="fontSize:12px;color:#A2937F;textDecoration:line-through">Rs 2,698</span></p>
+                <p style="margin:0 0 12px;display:flex;alignItems:baseline;gap:8px"><span style="fontSize:17px;color:#2F2519;whiteSpace:nowrap">Rs 2,499</span><span style="fontSize:12px;color:#A2937F;textDecoration:line-through;whiteSpace:nowrap">Rs 2,698</span></p>
                 <button type="button" data-sku="IB-DUO-NCFW" onClick="{{ addFromModal }}" style="border:1px solid #B8862F;background:transparent;color:#B8862F;padding:12px;fontFamily:inherit;fontSize:10px;letterSpacing:.18em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Add to bag</button>
               </div>
             </div>
@@ -54,7 +59,7 @@
               <div style="padding:16px 16px 18px;display:flex;flexDirection:column;flex:1">
                 <p style="fontSize:9px;letterSpacing:.2em;textTransform:uppercase;color:#B8862F;margin:0 0 8px">Offer 2</p>
                 <p style="fontFamily:'Cormorant Garamond',serif;fontSize:19px;lineHeight:1.25;margin:0 0 12px;color:#2F2519;flex:1">Tinted Sunblock + Face Wash</p>
-                <p style="margin:0 0 12px;display:flex;alignItems:baseline;gap:8px"><span style="fontSize:17px;color:#2F2519">Rs 2,299</span><span style="fontSize:12px;color:#A2937F;textDecoration:line-through">Rs 2,498</span></p>
+                <p style="margin:0 0 12px;display:flex;alignItems:baseline;gap:8px"><span style="fontSize:17px;color:#2F2519;whiteSpace:nowrap">Rs 2,299</span><span style="fontSize:12px;color:#A2937F;textDecoration:line-through;whiteSpace:nowrap">Rs 2,498</span></p>
                 <button type="button" data-sku="IB-DUO-TSFW" onClick="{{ addFromModal }}" style="border:1px solid #B8862F;background:transparent;color:#B8862F;padding:12px;fontFamily:inherit;fontSize:10px;letterSpacing:.18em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Add to bag</button>
               </div>
             </div>
@@ -66,7 +71,7 @@
               <div style="padding:16px 16px 18px;display:flex;flexDirection:column;flex:1">
                 <p style="fontSize:9px;letterSpacing:.2em;textTransform:uppercase;color:#B8862F;margin:0 0 8px">Combo</p>
                 <p style="fontFamily:'Cormorant Garamond',serif;fontSize:19px;lineHeight:1.25;margin:0 0 12px;color:#2F2519;flex:1">All three products</p>
-                <p style="margin:0 0 12px;display:flex;alignItems:baseline;gap:8px"><span style="fontSize:17px;color:#2F2519">Rs 3,799</span><span style="fontSize:12px;color:#A2937F;textDecoration:line-through">Rs 3,997</span></p>
+                <p style="margin:0 0 12px;display:flex;alignItems:baseline;gap:8px"><span style="fontSize:17px;color:#2F2519;whiteSpace:nowrap">Rs 3,799</span><span style="fontSize:12px;color:#A2937F;textDecoration:line-through;whiteSpace:nowrap">Rs 3,997</span></p>
                 <button type="button" data-sku="IB-SET-3" onClick="{{ addFromModal }}" style="border:0;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;padding:12px;fontFamily:inherit;fontSize:10px;letterSpacing:.18em;textTransform:uppercase;cursor:pointer;borderRadius:2px" style-hover="background:linear-gradient(135deg,#E0BC6E,#C0912F)">Add to bag</button>
               </div>
             </div>
@@ -83,7 +88,8 @@
   <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
 
   <section data-screen-label="Hero" style="background:#FBF4E8">
-    <img src="assets/hero-banner.jpg" alt="Iconix Beauty — Glow confidently, live beautifully. Premium skincare for healthy, radiant and glowing skin." style="display:block;width:100%;height:auto" />
+    <img class="ib-hero-desktop" src="assets/hero-banner.jpg" alt="Iconix Beauty — Glow confidently, live beautifully. Premium skincare for healthy, radiant and glowing skin." style="display:block;width:100%;height:auto" />
+    <img class="ib-hero-mobile" src="assets/hero-banner-mobile-v2.jpg" alt="Iconix Beauty — Glow confidently, live beautifully. Premium skincare for healthy, radiant and glowing skin." style="width:100%;height:auto" />
   </section>
 
   <section data-screen-label="Intro" style="borderBottom:1px solid rgba(184,134,47,.18)">
@@ -206,7 +212,7 @@
       </div>
 
       <div data-reveal="1" style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(16px,2.2vw,28px);marginBottom:clamp(16px,2.2vw,28px)">
-        <article style="background:#fff;border:1px solid rgba(184,134,47,.22);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(160px,100%),1fr));boxShadow:0 18px 40px rgba(184,134,47,.12)">
+        <article style="background:#fff;border:1px solid rgba(184,134,47,.22);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(260px,100%),1fr));boxShadow:0 18px 40px rgba(184,134,47,.12)">
           <a href="product.html?p=night-cream-facewash-duo" style="display:block;background:linear-gradient(160deg,#FFFDF8,#F7EEDF);aspectRatio:1;overflow:hidden;position:relative">
             <img src="assets/bundle-cream-facewash.png" alt="Night Cream and Face Wash bundle" style="width:100%;height:100%;objectFit:cover" />
             <span style="position:absolute;top:12px;left:12px;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;fontSize:9px;letterSpacing:.18em;textTransform:uppercase;padding:7px 12px">Save Rs 199</span>
@@ -215,14 +221,14 @@
             <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 10px">Special Offer 1</p>
             <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:24px;lineHeight:1.2;margin:0 0 10px;color:#2F2519"><a href="product.html?p=night-cream-facewash-duo">Night Cream + Face Wash</a></h3>
             <p style="fontSize:13px;lineHeight:1.65;fontWeight:300;color:#77685A;margin:0 0 18px">The evening pair — cleanse, then renew.</p>
-            <div style="display:flex;alignItems:baseline;gap:10px;marginBottom:18px">
-              <span style="fontFamily:'Cormorant Garamond',serif;fontSize:27px;color:#2F2519">Rs 2,499</span>
-              <span style="fontSize:13px;color:#A2937F;textDecoration:line-through">Rs 2,698</span>
+            <div style="display:flex;alignItems:baseline;gap:10px;marginBottom:18px;flexWrap:wrap">
+              <span style="fontFamily:'Cormorant Garamond',serif;fontSize:27px;color:#2F2519;whiteSpace:nowrap">Rs 2,499</span>
+              <span style="fontSize:13px;color:#A2937F;textDecoration:line-through;whiteSpace:nowrap">Rs 2,698</span>
             </div>
             <button type="button" data-sku="IB-DUO-NCFW" onClick="{{ addToCart }}" style="border:1px solid #B8862F;background:transparent;color:#B8862F;padding:15px;fontFamily:inherit;fontSize:10.5px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Add this offer</button>
           </div>
         </article>
-        <article style="background:#fff;border:1px solid rgba(184,134,47,.22);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(160px,100%),1fr));boxShadow:0 18px 40px rgba(184,134,47,.12)">
+        <article style="background:#fff;border:1px solid rgba(184,134,47,.22);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(260px,100%),1fr));boxShadow:0 18px 40px rgba(184,134,47,.12)">
           <a href="product.html?p=sunblock-facewash-duo" style="display:block;background:linear-gradient(160deg,#FFFDF8,#F7EEDF);aspectRatio:1;overflow:hidden;position:relative">
             <img src="assets/bundle-sun-facewash.png" alt="Tinted Sunblock and Face Wash bundle" style="width:100%;height:100%;objectFit:cover" />
             <span style="position:absolute;top:12px;left:12px;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;fontSize:9px;letterSpacing:.18em;textTransform:uppercase;padding:7px 12px">Save Rs 199</span>
@@ -231,9 +237,9 @@
             <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#B8862F;margin:0 0 10px">Special Offer 2</p>
             <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:24px;lineHeight:1.2;margin:0 0 10px;color:#2F2519"><a href="product.html?p=sunblock-facewash-duo">Sunblock + Face Wash</a></h3>
             <p style="fontSize:13px;lineHeight:1.65;fontWeight:300;color:#77685A;margin:0 0 18px">The morning pair — cleanse, then protect.</p>
-            <div style="display:flex;alignItems:baseline;gap:10px;marginBottom:18px">
-              <span style="fontFamily:'Cormorant Garamond',serif;fontSize:27px;color:#2F2519">Rs 2,299</span>
-              <span style="fontSize:13px;color:#A2937F;textDecoration:line-through">Rs 2,498</span>
+            <div style="display:flex;alignItems:baseline;gap:10px;marginBottom:18px;flexWrap:wrap">
+              <span style="fontFamily:'Cormorant Garamond',serif;fontSize:27px;color:#2F2519;whiteSpace:nowrap">Rs 2,299</span>
+              <span style="fontSize:13px;color:#A2937F;textDecoration:line-through;whiteSpace:nowrap">Rs 2,498</span>
             </div>
             <button type="button" data-sku="IB-DUO-TSFW" onClick="{{ addToCart }}" style="border:1px solid #B8862F;background:transparent;color:#B8862F;padding:15px;fontFamily:inherit;fontSize:10.5px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Add this offer</button>
           </div>
@@ -249,8 +255,8 @@
           <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,4.6vw,46px);lineHeight:1.08;margin:0 0 18px;color:#fff">The whole routine, Rs 3,799</h2>
           <p style="fontSize:15px;lineHeight:1.75;fontWeight:300;color:#C6B79F;margin:0 0 26px;maxWidth:420px">Face Wash, Tinted Sunblock SPF 50++ and Anti Aging Night Cream. Morning and night, covered — saving Rs 198 and shipping free.</p>
           <div style="display:flex;alignItems:center;gap:20px;flexWrap:wrap">
-            <span style="fontFamily:'Cormorant Garamond',serif;fontSize:30px;color:#fff">Rs 3,799</span>
-            <span style="fontSize:14px;color:#B5A791;textDecoration:line-through">Rs 3,997</span>
+            <span style="fontFamily:'Cormorant Garamond',serif;fontSize:30px;color:#fff;whiteSpace:nowrap">Rs 3,799</span>
+            <span style="fontSize:14px;color:#B5A791;textDecoration:line-through;whiteSpace:nowrap">Rs 3,997</span>
           </div>
           <button type="button" data-sku="IB-SET-3" onClick="{{ addToCart }}" style="marginTop:26px;border:0;background:linear-gradient(135deg,#E3C179,#C89340);color:#2F2519;padding:18px 34px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer;alignSelf:flex-start" style-hover="background:linear-gradient(135deg,#F0D69B,#D6A24C)">Add the combo</button>
         </div>
