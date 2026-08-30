@@ -8,21 +8,18 @@
     tagline: 'Be Confident. Be Iconic.',
 
     /* ---- WHERE ORDERS GO -------------------------------------
-       1) Make a free account at emailjs.com
-       2) Add an email service, then create a template whose body
-          uses these variables:
-          {{order_id}} {{customer_name}} {{phone}} {{email}}
-          {{city}} {{address}} {{notes}} {{items_text}}
-          {{subtotal}} {{delivery}} {{total}} {{payment}}
-       3) Paste the three ids below. Until then, checkout falls
-          back to WhatsApp + the customer's own email app.        */
+       Orders are emailed straight to orderEmail below via
+       FormSubmit (formsubmit.co) — free, no account needed.
+       ONE-TIME STEP: place a test order; FormSubmit sends an
+       "Activate" email to your inbox — click it once, done.
+       (emailjs is an optional secondary; leave ids empty.)      */
     emailjs: {
-      publicKey: '',      // e.g. 'A1b2C3d4E5f6G7h8'
-      serviceId: '',      // e.g. 'service_xxxxxxx'
-      templateId: ''      // e.g. 'template_xxxxxxx'
+      publicKey: '',
+      serviceId: '',
+      templateId: ''
     },
 
-    orderEmail: 'orders@iconixbeauty.pk',   // <-- your inbox
+    orderEmail: 'iconixbeauty84@gmail.com',
     whatsapp: '923218583514',              // <-- digits only, with country code
     instagram: 'https://instagram.com/iconixbeautyofficial',
     city: 'Pakistan',
@@ -261,13 +258,47 @@
       '&body=' + encodeURIComponent(orderText(o));
   }
 
-  function sendOrder(o) {
+  function sendViaFormSubmit(o) {
+    return fetch('https://formsubmit.co/ajax/' + CONFIG.orderEmail, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New order ' + o.order_id + ' — ' + o.total,
+        _template: 'box',
+        _captcha: 'false',
+        'Order ID': o.order_id,
+        'Customer': o.customer_name,
+        'Phone': o.phone,
+        'Email': o.email || '—',
+        'City': o.city,
+        'Address': o.address,
+        'Notes': o.notes || '—',
+        'Items': o.items_text,
+        'Subtotal': o.subtotal,
+        'Delivery': o.delivery,
+        'Total': o.total,
+        'Payment': o.payment
+      })
+    }).then(function (r) {
+      if (!r.ok) throw new Error('formsubmit http ' + r.status);
+      return r.json().then(function (d) {
+        if (d && (d.success === 'true' || d.success === true)) return d;
+        throw new Error('formsubmit rejected');
+      });
+    });
+  }
+
+  function sendViaEmailJs(o) {
     var cfg = CONFIG.emailjs;
     if (!cfg.publicKey || !cfg.serviceId || !cfg.templateId || !window.emailjs) {
       return Promise.reject({ reason: 'not-configured' });
     }
     try { window.emailjs.init({ publicKey: cfg.publicKey }); } catch (e) {}
     return window.emailjs.send(cfg.serviceId, cfg.templateId, o);
+  }
+
+  function sendOrder(o) {
+    return sendViaFormSubmit(o).catch(function () { return sendViaEmailJs(o); });
   }
 
   window.ICONIX = {
