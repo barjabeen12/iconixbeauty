@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Iconix Beauty — Be Confident. Be Iconic.</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="store.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FBF8F3; color: #14110E; }
+  a { color: #14110E; text-decoration: none; }
+  a:hover { color: #A8813A; }
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; cursor: pointer; }
+</style>
+</helmet>
+<div style="fontFamily:'Jost',sans-serif;background:#FBF8F3;color:#14110E">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <section data-screen-label="Hero" style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(380px,100%),1fr));minHeight:660px;borderBottom:1px solid rgba(20,17,14,.10)">
+    <div style="display:flex;flexDirection:column;justifyContent:center;padding:clamp(60px,8vw,96px) clamp(20px,5vw,72px);maxWidth:672px;marginLeft:auto;width:100%;boxSizing:border-box">
+      <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 26px">New in Pakistan</p>
+      <h1 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(38px,7vw,66px);lineHeight:1.06;letterSpacing:-.01em;margin:0 0 26px;textWrap:pretty">Skin that keeps<br />its own secrets.</h1>
+      <p style="fontSize:16px;lineHeight:1.75;fontWeight:300;color:#4A4239;margin:0 0 40px;maxWidth:430px;textWrap:pretty">Three considered formulas — a brightening cleanse, SPF 50+ protection, and overnight renewal. Dermatologically recommended, cruelty free, made for Pakistani skin and Pakistani sun.</p>
+      <div style="display:flex;gap:14px;flexWrap:wrap;alignItems:center">
+        <a href="Shop.dc.html" style="background:#14110E;color:#FBF8F3;padding:19px 40px;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase" style-hover="background:#A8813A;color:#fff">Shop the collection</a>
+        <a href="Product.dc.html?p=tinted-sunscreen-spf50" style="padding:19px 4px;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;color:#4A4239;borderBottom:1px solid rgba(20,17,14,.28)" style-hover="color:#A8813A;borderColor:#D8BC7A">Meet the bestseller</a>
+      </div>
+      <div style="display:flex;gap:34px;marginTop:56px;fontSize:10.5px;letterSpacing:.16em;textTransform:uppercase;color:#8A8177">
+        <span>Cash on delivery</span>
+        <span>3–5 day delivery</span>
+        <span>Free over Rs 2,500</span>
+      </div>
+    </div>
+    <div style="background:#F2ECE0;position:relative;overflow:hidden;minHeight:clamp(340px,52vw,660px)">
+      <img src="assets/sunscreen-marble.jpg" alt="Iconix Beauty Tinted Sunscreen SPF 50+" style="width:100%;height:100%;objectFit:cover;objectPosition:center 42%" />
+    </div>
+  </section>
+
+  <section style="borderBottom:1px solid rgba(20,17,14,.10);background:#F6F1E9">
+    <div style="maxWidth:1240px;margin:0 auto;padding:26px clamp(20px,4vw,32px);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:24px;textAlign:center;fontSize:10px;letterSpacing:.22em;textTransform:uppercase;color:#6B6259">
+      <span>Cruelty free</span>
+      <span>Non toxic</span>
+      <span>Dermatologically recommended</span>
+      <span>100% authentic</span>
+    </div>
+  </section>
+
+  <section data-screen-label="Collection" style="maxWidth:1240px;margin:0 auto;padding:clamp(64px,8vw,110px) clamp(20px,4vw,32px) 40px">
+    <div style="display:flex;alignItems:flex-end;justifyContent:space-between;gap:32px;marginBottom:56px">
+      <div>
+        <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 18px">The collection</p>
+        <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,5vw,44px);lineHeight:1.1;margin:0">Three products. Nothing spare.</h2>
+      </div>
+      <a href="Shop.dc.html" style="fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#4A4239;borderBottom:1px solid rgba(20,17,14,.22);paddingBottom:4px;whiteSpace:nowrap" style-hover="color:#A8813A;borderColor:#D8BC7A">View all</a>
+    </div>
+    <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:32px">
+      <article style="background:#fff;border:1px solid rgba(20,17,14,.09);display:flex;flexDirection:column">
+        <a href="Product.dc.html?p=tinted-sunscreen-spf50" style="display:block;background:#F2ECE0;aspectRatio:4/5;overflow:hidden">
+          <img src="assets/sunscreen-box.jpg" alt="Tinted Sunscreen SPF 50+" style="width:100%;height:100%;objectFit:cover;objectPosition:center center" />
+        </a>
+        <div style="padding:28px 26px 26px;display:flex;flexDirection:column;flex:1">
+          <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#A8813A;margin:0 0 12px">Bestseller</p>
+          <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:25px;lineHeight:1.2;margin:0 0 8px"><a href="Product.dc.html?p=tinted-sunscreen-spf50">Tinted Sunscreen SPF 50+</a></h3>
+          <p style="fontSize:13.5px;lineHeight:1.65;fontWeight:300;color:#6B6259;margin:0 0 20px;flex:1">Broad-spectrum defence with a weightless tint that evens tone and disappears into skin.</p>
+          <div style="display:flex;alignItems:baseline;justifyContent:space-between;marginBottom:20px">
+            <span style="fontSize:15px;letterSpacing:.04em">Rs 1,250</span>
+            <span style="fontSize:10.5px;letterSpacing:.14em;textTransform:uppercase;color:#8A8177">50ml</span>
+          </div>
+          <button type="button" data-sku="IB-TS-50" onClick="{{ addToCart }}" style="width:100%;border:1px solid #14110E;background:transparent;color:#14110E;padding:16px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:#14110E;color:#FBF8F3">Add to bag</button>
+        </div>
+      </article>
+
+      <article style="background:#fff;border:1px solid rgba(20,17,14,.09);display:flex;flexDirection:column">
+        <a href="Product.dc.html?p=brightening-facewash" style="display:block;background:#F2ECE0;aspectRatio:4/5;overflow:hidden">
+          <img src="assets/facewash-beach.png" alt="Brightening Facewash" style="width:100%;height:100%;objectFit:cover;objectPosition:center 45%" />
+        </a>
+        <div style="padding:28px 26px 26px;display:flex;flexDirection:column;flex:1">
+          <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#A8813A;margin:0 0 12px">Vitamin C enriched</p>
+          <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:25px;lineHeight:1.2;margin:0 0 8px"><a href="Product.dc.html?p=brightening-facewash">Brightening Facewash</a></h3>
+          <p style="fontSize:13.5px;lineHeight:1.65;fontWeight:300;color:#6B6259;margin:0 0 20px;flex:1">Gel beads burst on contact to polish away dead cells, oil and deep-seated impurities.</p>
+          <div style="display:flex;alignItems:baseline;justifyContent:space-between;marginBottom:20px">
+            <span style="fontSize:15px;letterSpacing:.04em">Rs 1,050</span>
+            <span style="fontSize:10.5px;letterSpacing:.14em;textTransform:uppercase;color:#8A8177">150ml</span>
+          </div>
+          <button type="button" data-sku="IB-FW-150" onClick="{{ addToCart }}" style="width:100%;border:1px solid #14110E;background:transparent;color:#14110E;padding:16px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:#14110E;color:#FBF8F3">Add to bag</button>
+        </div>
+      </article>
+
+      <article style="background:#fff;border:1px solid rgba(20,17,14,.09);display:flex;flexDirection:column">
+        <a href="Product.dc.html?p=anti-aging-night-cream" style="display:block;background:#F2ECE0;aspectRatio:4/5;overflow:hidden">
+          <img src="assets/cream-beach.png" alt="Anti Aging Night Cream" style="width:100%;height:100%;objectFit:cover;objectPosition:center 62%" />
+        </a>
+        <div style="padding:28px 26px 26px;display:flex;flexDirection:column;flex:1">
+          <p style="fontSize:9.5px;letterSpacing:.22em;textTransform:uppercase;color:#A8813A;margin:0 0 12px">Overnight renewal</p>
+          <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:25px;lineHeight:1.2;margin:0 0 8px"><a href="Product.dc.html?p=anti-aging-night-cream">Anti Aging Night Cream</a></h3>
+          <p style="fontSize:13.5px;lineHeight:1.65;fontWeight:300;color:#6B6259;margin:0 0 20px;flex:1">Retinol, collagen and niacinamide rebuild firmness and smooth fine lines while you sleep.</p>
+          <div style="display:flex;alignItems:baseline;justifyContent:space-between;marginBottom:20px">
+            <span style="fontSize:15px;letterSpacing:.04em">Rs 1,500</span>
+            <span style="fontSize:10.5px;letterSpacing:.14em;textTransform:uppercase;color:#8A8177">50g</span>
+          </div>
+          <button type="button" data-sku="IB-NC-50" onClick="{{ addToCart }}" style="width:100%;border:1px solid #14110E;background:transparent;color:#14110E;padding:16px;fontFamily:inherit;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:#14110E;color:#FBF8F3">Add to bag</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section data-screen-label="Bestseller" style="maxWidth:1240px;margin:0 auto;padding:clamp(56px,7vw,100px) clamp(20px,4vw,32px)">
+    <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(340px,100%),1fr));background:#fff;border:1px solid rgba(20,17,14,.09)">
+      <div style="background:#F2ECE0;overflow:hidden;minHeight:clamp(320px,48vw,620px)">
+        <img src="assets/sunscreen-beach.jpg" alt="Tinted Sunscreen SPF 50+ on the shore" style="width:100%;height:100%;objectFit:cover" />
+      </div>
+      <div style="padding:clamp(44px,6vw,76px) clamp(24px,5vw,64px);display:flex;flexDirection:column;justifyContent:center">
+        <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 22px">Most loved</p>
+        <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,4.8vw,42px);lineHeight:1.12;margin:0 0 20px">Tinted Sunscreen<br />SPF 50+</h2>
+        <p style="fontSize:15.5px;lineHeight:1.75;fontWeight:300;color:#4A4239;margin:0 0 34px;maxWidth:420px;textWrap:pretty">Zinc oxide and titanium dioxide shield against UVA, UVB, pollution and blue light. Niacinamide and aloe keep it calm. The tint does the work of a light base — no white cast, no grease.</p>
+        <div style="display:grid;gridTemplateColumns:1fr 1fr;gap:14px 28px;marginBottom:40px;fontSize:13px;fontWeight:300;color:#4A4239">
+          <span style="borderTop:1px solid rgba(20,17,14,.12);paddingTop:12px">Broad spectrum SPF 50+</span>
+          <span style="borderTop:1px solid rgba(20,17,14,.12);paddingTop:12px">Evens skin tone</span>
+          <span style="borderTop:1px solid rgba(20,17,14,.12);paddingTop:12px">Non-greasy, non-comedogenic</span>
+          <span style="borderTop:1px solid rgba(20,17,14,.12);paddingTop:12px">Hydrates &amp; soothes</span>
+        </div>
+        <div style="display:flex;alignItems:center;gap:28px;flexWrap:wrap">
+          <span style="fontFamily:'Cormorant Garamond',serif;fontSize:30px">Rs 1,250</span>
+          <button type="button" data-sku="IB-TS-50" onClick="{{ addToCart }}" style="border:0;background:#14110E;color:#FBF8F3;padding:19px 40px;fontFamily:inherit;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:#A8813A">Add to bag</button>
+          <a href="Product.dc.html?p=tinted-sunscreen-spf50" style="fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#6B6259;borderBottom:1px solid rgba(20,17,14,.22);paddingBottom:3px" style-hover="color:#A8813A">Full details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Ingredients" style="background:#14110E;color:#E9E2D6">
+    <div style="maxWidth:1240px;margin:0 auto;padding:clamp(64px,8vw,110px) clamp(20px,4vw,32px)">
+      <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#C9A24A;margin:0 0 20px">Inside the formulas</p>
+      <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,5vw,44px);lineHeight:1.1;margin:0 0 64px;color:#FBF8F3;maxWidth:620px">Actives chosen for what they do, not how they sound.</h2>
+      <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(258px,100%),1fr));gap:1px;background:rgba(251,248,243,.14)">
+        <div style="background:#14110E;padding:38px 34px">
+          <p style="fontFamily:'Cormorant Garamond',serif;fontSize:26px;color:#FBF8F3;margin:0 0 12px">Retinol</p>
+          <p style="fontSize:9.5px;letterSpacing:.2em;textTransform:uppercase;color:#C9A24A;margin:0 0 16px">Night Cream</p>
+          <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#A79E90;margin:0">Accelerates cell turnover so fine lines and rough texture soften over weeks, not years.</p>
+        </div>
+        <div style="background:#14110E;padding:38px 34px">
+          <p style="fontFamily:'Cormorant Garamond',serif;fontSize:26px;color:#FBF8F3;margin:0 0 12px">Hydrolyzed Collagen</p>
+          <p style="fontSize:9.5px;letterSpacing:.2em;textTransform:uppercase;color:#C9A24A;margin:0 0 16px">Night Cream</p>
+          <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#A79E90;margin:0">Small enough to sink in. Plumps depleted cells and restores bounce to sagging areas.</p>
+        </div>
+        <div style="background:#14110E;padding:38px 34px">
+          <p style="fontFamily:'Cormorant Garamond',serif;fontSize:26px;color:#FBF8F3;margin:0 0 12px">Niacinamide</p>
+          <p style="fontSize:9.5px;letterSpacing:.2em;textTransform:uppercase;color:#C9A24A;margin:0 0 16px">Night Cream · Sunscreen</p>
+          <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#A79E90;margin:0">Fades uneven tone and post-sun pigmentation while strengthening the barrier.</p>
+        </div>
+        <div style="background:#14110E;padding:38px 34px">
+          <p style="fontFamily:'Cormorant Garamond',serif;fontSize:26px;color:#FBF8F3;margin:0 0 12px">Glycolic Acid</p>
+          <p style="fontSize:9.5px;letterSpacing:.2em;textTransform:uppercase;color:#C9A24A;margin:0 0 16px">Facewash</p>
+          <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#A79E90;margin:0">Loosens the dulling layer of dead cells so skin reflects light again.</p>
+        </div>
+        <div style="background:#14110E;padding:38px 34px">
+          <p style="fontFamily:'Cormorant Garamond',serif;fontSize:26px;color:#FBF8F3;margin:0 0 12px">Zinc &amp; Titanium Oxide</p>
+          <p style="fontSize:9.5px;letterSpacing:.2em;textTransform:uppercase;color:#C9A24A;margin:0 0 16px">Sunscreen</p>
+          <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#A79E90;margin:0">Mineral filters that sit on the surface and reflect UVA, UVB and visible light.</p>
+        </div>
+        <div style="background:#14110E;padding:38px 34px">
+          <p style="fontFamily:'Cormorant Garamond',serif;fontSize:26px;color:#FBF8F3;margin:0 0 12px">Glutathione &amp; Vitamin E</p>
+          <p style="fontSize:9.5px;letterSpacing:.2em;textTransform:uppercase;color:#C9A24A;margin:0 0 16px">Night Cream</p>
+          <p style="fontSize:14px;lineHeight:1.7;fontWeight:300;color:#A79E90;margin:0">Antioxidant pair that mops up the damage a day in Pakistani sun leaves behind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="How to use" style="maxWidth:1240px;margin:0 auto;padding:clamp(64px,8vw,110px) clamp(20px,4vw,32px)">
+    <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 20px">The ritual</p>
+    <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,5vw,44px);lineHeight:1.1;margin:0 0 64px;maxWidth:560px">Three steps, twice a day.</h2>
+    <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:40px">
+      <div style="borderTop:1px solid rgba(20,17,14,.16);paddingTop:28px">
+        <p style="fontFamily:'Cormorant Garamond',serif;fontSize:clamp(30px,5vw,44px);color:#D8BC7A;margin:0 0 16px;lineHeight:1">01</p>
+        <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;margin:0 0 12px">Cleanse</h3>
+        <p style="fontSize:14.5px;lineHeight:1.75;fontWeight:300;color:#6B6259;margin:0">Dampen face and neck with lukewarm water. Work a coin-sized amount of the gel between wet palms until the beads burst, then massage in and rinse.</p>
+      </div>
+      <div style="borderTop:1px solid rgba(20,17,14,.16);paddingTop:28px">
+        <p style="fontFamily:'Cormorant Garamond',serif;fontSize:clamp(30px,5vw,44px);color:#D8BC7A;margin:0 0 16px;lineHeight:1">02</p>
+        <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;margin:0 0 12px">Protect — morning</h3>
+        <p style="fontSize:14.5px;lineHeight:1.75;fontWeight:300;color:#6B6259;margin:0">A generous, even layer of Tinted Sunscreen fifteen minutes before you leave. Reapply every two to three hours outdoors.</p>
+      </div>
+      <div style="borderTop:1px solid rgba(20,17,14,.16);paddingTop:28px">
+        <p style="fontFamily:'Cormorant Garamond',serif;fontSize:clamp(30px,5vw,44px);color:#D8BC7A;margin:0 0 16px;lineHeight:1">03</p>
+        <h3 style="fontFamily:'Cormorant Garamond',serif;fontWeight:400;fontSize:26px;margin:0 0 12px">Renew — night</h3>
+        <p style="fontSize:14.5px;lineHeight:1.75;fontWeight:300;color:#6B6259;margin:0">A dime-sized amount of Night Cream over face and neck, massaged in gentle upward and outward lifting motions until it melts in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ritual" data-screen-label="Ritual set" style="background:#F2ECE0;borderTop:1px solid rgba(20,17,14,.10);borderBottom:1px solid rgba(20,17,14,.10)">
+    <div style="maxWidth:1240px;margin:0 auto;padding:clamp(56px,7vw,90px) clamp(20px,4vw,32px);display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(36px,5vw,72px);alignItems:center">
+      <div style="background:#fff;border:1px solid rgba(20,17,14,.09);overflow:hidden;aspectRatio:4/5;maxWidth:520px">
+        <img src="assets/trio.png" alt="The Iconix Ritual set" style="width:100%;height:100%;objectFit:cover" />
+      </div>
+      <div>
+        <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 20px">Save Rs 300</p>
+        <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,5vw,44px);lineHeight:1.1;margin:0 0 20px">The Iconix Ritual</h2>
+        <p style="fontSize:15.5px;lineHeight:1.75;fontWeight:300;color:#4A4239;margin:0 0 30px;maxWidth:470px;textWrap:pretty">All three formulas in one box — brightening cleanse, SPF 50+ by day, renewal by night. The whole routine, priced as one.</p>
+        <div style="display:flex;alignItems:baseline;gap:16px;marginBottom:34px">
+          <span style="fontFamily:'Cormorant Garamond',serif;fontSize:34px">Rs 3,500</span>
+          <span style="fontSize:14px;color:#8A8177;textDecoration:line-through">Rs 3,800</span>
+        </div>
+        <div style="display:flex;gap:16px;flexWrap:wrap;alignItems:center">
+          <button type="button" data-sku="IB-SET-3" onClick="{{ addToCart }}" style="border:0;background:#14110E;color:#FBF8F3;padding:19px 40px;fontFamily:inherit;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:#A8813A">Add the set</button>
+          <a href="Product.dc.html?p=the-iconix-ritual" style="fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#6B6259;borderBottom:1px solid rgba(20,17,14,.22);paddingBottom:3px" style-hover="color:#A8813A">What's inside</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Reviews" style="maxWidth:1240px;margin:0 auto;padding:clamp(64px,8vw,110px) clamp(20px,4vw,32px)">
+    <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 20px">In their words</p>
+    <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,5vw,44px);lineHeight:1.1;margin:0 0 20px;maxWidth:560px">What our customers say</h2>
+    <p style="fontSize:12px;letterSpacing:.08em;color:#8A8177;margin:0 0 56px;fontStyle:italic">Placeholder — replace each quote and name below with a real review before you go live.</p>
+    <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:32px">
+      <blockquote style="background:#fff;border:1px solid rgba(20,17,14,.09);padding:40px 34px;margin:0;display:flex;flexDirection:column;gap:22px">
+        <span style="color:#D8BC7A;letterSpacing:.3em;fontSize:12px">★★★★★</span>
+        <p style="fontFamily:'Cormorant Garamond',serif;fontSize:22px;lineHeight:1.5;color:#14110E;margin:0;textWrap:pretty">Paste your first real customer review here — one or two sentences is plenty.</p>
+        <footer style="fontSize:10.5px;letterSpacing:.18em;textTransform:uppercase;color:#8A8177">Customer name · City</footer>
+      </blockquote>
+      <blockquote style="background:#fff;border:1px solid rgba(20,17,14,.09);padding:40px 34px;margin:0;display:flex;flexDirection:column;gap:22px">
+        <span style="color:#D8BC7A;letterSpacing:.3em;fontSize:12px">★★★★★</span>
+        <p style="fontFamily:'Cormorant Garamond',serif;fontSize:22px;lineHeight:1.5;color:#14110E;margin:0;textWrap:pretty">Second review goes here. Reviews that name a specific result convert best.</p>
+        <footer style="fontSize:10.5px;letterSpacing:.18em;textTransform:uppercase;color:#8A8177">Customer name · City</footer>
+      </blockquote>
+      <blockquote style="background:#fff;border:1px solid rgba(20,17,14,.09);padding:40px 34px;margin:0;display:flex;flexDirection:column;gap:22px">
+        <span style="color:#D8BC7A;letterSpacing:.3em;fontSize:12px">★★★★★</span>
+        <p style="fontFamily:'Cormorant Garamond',serif;fontSize:22px;lineHeight:1.5;color:#14110E;margin:0;textWrap:pretty">Third review goes here. Screenshots from WhatsApp are fine — just type them out.</p>
+        <footer style="fontSize:10.5px;letterSpacing:.18em;textTransform:uppercase;color:#8A8177">Customer name · City</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="faq" data-screen-label="FAQ" style="borderTop:1px solid rgba(20,17,14,.10);background:#F6F1E9">
+    <div style="maxWidth:1000px;margin:0 auto;padding:clamp(64px,8vw,110px) clamp(20px,4vw,32px)">
+      <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#A8813A;margin:0 0 20px">Good to know</p>
+      <h2 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(30px,5vw,44px);lineHeight:1.1;margin:0 0 56px">Questions, answered</h2>
+      <details style="borderTop:1px solid rgba(20,17,14,.14)">
+        <summary style="padding:26px 0;fontSize:17px;fontWeight:400;display:flex;justifyContent:space-between;gap:20px;alignItems:center">How does delivery work?<span style="color:#A8813A;fontSize:18px">+</span></summary>
+        <p style="fontSize:14.5px;lineHeight:1.8;fontWeight:300;color:#6B6259;margin:0 0 28px;maxWidth:680px">We ship nationwide in 3–5 working days. Delivery is Rs 250 flat, and free on orders over Rs 2,500. You'll get a WhatsApp message with your tracking number once the parcel is picked up.</p>
+      </details>
+      <details style="borderTop:1px solid rgba(20,17,14,.14)">
+        <summary style="padding:26px 0;fontSize:17px;fontWeight:400;display:flex;justifyContent:space-between;gap:20px;alignItems:center">Can I pay cash on delivery?<span style="color:#A8813A;fontSize:18px">+</span></summary>
+        <p style="fontSize:14.5px;lineHeight:1.8;fontWeight:300;color:#6B6259;margin:0 0 28px;maxWidth:680px">Yes — cash on delivery is our only payment method for now. Place the order, and pay the courier when your parcel arrives. Nothing is charged online.</p>
+      </details>
+      <details style="borderTop:1px solid rgba(20,17,14,.14)">
+        <summary style="padding:26px 0;fontSize:17px;fontWeight:400;display:flex;justifyContent:space-between;gap:20px;alignItems:center">What if I want to return something?<span style="color:#A8813A;fontSize:18px">+</span></summary>
+        <p style="fontSize:14.5px;lineHeight:1.8;fontWeight:300;color:#6B6259;margin:0 0 28px;maxWidth:680px">Unopened products can be returned within 7 days of delivery. If a parcel arrives damaged or incorrect, send us a photo on WhatsApp within 48 hours and we'll replace it at our cost.</p>
+      </details>
+      <details style="borderTop:1px solid rgba(20,17,14,.14)">
+        <summary style="padding:26px 0;fontSize:17px;fontWeight:400;display:flex;justifyContent:space-between;gap:20px;alignItems:center">Are the products authentic and safe?<span style="color:#A8813A;fontSize:18px">+</span></summary>
+        <p style="fontSize:14.5px;lineHeight:1.8;fontWeight:300;color:#6B6259;margin:0 0 28px;maxWidth:680px">Every unit is filled and sealed for Iconix Beauty and sold only here — never through a third party. The formulas are cruelty free, non toxic and dermatologically recommended. Full ingredient lists are printed on every carton and listed on each product page.</p>
+      </details>
+      <details style="borderTop:1px solid rgba(20,17,14,.14);borderBottom:1px solid rgba(20,17,14,.14)">
+        <summary style="padding:26px 0;fontSize:17px;fontWeight:400;display:flex;justifyContent:space-between;gap:20px;alignItems:center">Will the tinted sunscreen match my skin?<span style="color:#A8813A;fontSize:18px">+</span></summary>
+        <p style="fontSize:14.5px;lineHeight:1.8;fontWeight:300;color:#6B6259;margin:0 0 28px;maxWidth:680px">The tint is a single sheer, warm-neutral shade designed to adapt across medium to deep tones rather than mask them. It evens out redness and pigmentation without leaving a white cast.</p>
+      </details>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      addToCart: (e) => {
+        const sku = e.currentTarget.dataset.sku;
+        if (!window.ICONIX) return;
+        window.ICONIX.add(sku, 1);
+        window.dispatchEvent(new Event('iconix-open-cart'));
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

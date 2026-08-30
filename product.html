@@ -51,7 +51,8 @@
       <div style="display:flex;alignItems:baseline;gap:14px;marginBottom:34px">
         <span style="fontFamily:'Cormorant Garamond',serif;fontSize:36px">{{ priceText }}</span>
         <sc-if value="{{ hasCompare }}" hint-placeholder-val="{{ false }}">
-          <span style="fontSize:15px;color:#8E7F6D;textDecoration:line-through">{{ compareText }}</span>
+          <span style="fontSize:15px;color:#8E7F6D;textDecoration:line-through;whiteSpace:nowrap">{{ compareText }}</span>
+          <span style="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;fontSize:10px;letterSpacing:.14em;padding:6px 10px;borderRadius:2px;whiteSpace:nowrap">{{ offText }}</span>
         </sc-if>
       </div>
 
@@ -65,8 +66,10 @@
       </div>
       <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:flex;alignItems:center;justifyContent:center;height:56px;border:1px solid rgba(59,47,34,.18);fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;color:#5A4C3C;marginBottom:30px" style-hover="borderColor:#B8862F;color:#B8862F">Order on WhatsApp</a>
 
-      <div style="display:flex;gap:26px;flexWrap:wrap;fontSize:10.5px;letterSpacing:.16em;textTransform:uppercase;color:#8E7F6D;marginBottom:44px">
-        <span>Cash on delivery</span><span>3–5 days</span><span>Free over Rs 3,000</span>
+      <div style="display:flex;flexDirection:column;gap:9px;marginBottom:44px">
+        <span style="fontSize:12.5px;fontWeight:300;color:#5A4C3C"><span style="color:#B8862F;marginRight:8px">✓</span>100% authentic — sold only by Iconix Beauty</span>
+        <span style="fontSize:12.5px;fontWeight:300;color:#5A4C3C"><span style="color:#B8862F;marginRight:8px">✓</span>Cash on delivery · nothing charged online</span>
+        <span style="fontSize:12.5px;fontWeight:300;color:#5A4C3C"><span style="color:#B8862F;marginRight:8px">✓</span>3–5 day delivery · free over Rs 3,000</span>
       </div>
 
       <details open="" style="borderTop:1px solid rgba(184,134,47,.25)">
@@ -158,6 +161,7 @@ class Component extends DCLogic {
       description: p.description, ingredients: p.ingredients,
       priceText: S.fmt(p.price),
       hasCompare: !!p.compareAt,
+      offText: p.compareAt ? Math.round((1 - p.price / p.compareAt) * 100) + '% OFF' : '',
       compareText: p.compareAt ? S.fmt(p.compareAt) : '',
       heroImg: gal[idx],
       gallery: gal.map((src, i) => ({ src, border: i === idx ? '#B8862F' : 'rgba(59,47,34,.10)' })),

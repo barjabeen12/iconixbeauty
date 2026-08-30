@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Us — Iconix Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="store.js"></script>
+<style>
+  body { margin: 0; background: #FFFCF7; color: #2F2519; }
+  a { color: #2F2519; text-decoration: none; }
+  a:hover { color: #B8862F; }
+</style>
+</helmet>
+<div style="fontFamily:'Jost',sans-serif;background:#FFFCF7;color:#2F2519">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+  <section style="maxWidth:760px;margin:0 auto;padding:clamp(52px,7vw,96px) clamp(20px,4vw,32px)">
+    <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#B8862F;margin:0 0 18px">About us</p>
+    <h1 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(34px,5.5vw,50px);lineHeight:1.08;margin:0 0 28px">Be confident. Be iconic.</h1>
+    <div style="fontSize:15px;lineHeight:1.9;fontWeight:300;color:#5A4C3C;display:flex;flexDirection:column;gap:18px">
+      <p style="margin:0">Iconix Beauty is a Pakistani skincare brand built around one belief: healthy, radiant skin shouldn't need a ten-step routine. We make three considered formulas — a brightening Vitamin C face wash, a tinted SPF 50+ sunscreen, and an anti-aging night cream — designed for Pakistani skin and the Pakistani sun.</p>
+      <p style="margin:0">Every product is cruelty free, non toxic and dermatologically tested, with full ingredient lists printed on every carton. We sell only through our own store, so every unit you receive is sealed, authentic and fresh.</p>
+      <p style="margin:0">We deliver nationwide in 3–5 working days with cash on delivery — you pay only when your parcel is in your hands. Questions? We're on <a href="{{ waLink }}" target="_blank" rel="noopener" style="color:#B8862F;borderBottom:1px solid #D8AE55">WhatsApp</a> and <a href="https://www.instagram.com/iconixbeautyofficial" target="_blank" rel="noopener" style="color:#B8862F;borderBottom:1px solid #D8AE55">Instagram</a>.</p>
+    </div>
+  </section>
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.ICONIX) window.addEventListener('iconix-ready', this._on = () => this.forceUpdate());
+  }
+  componentWillUnmount() { window.removeEventListener('iconix-ready', this._on); }
+  renderVals() {
+    const S = window.ICONIX;
+    return { waLink: S ? S.whatsappLink('Hello Iconix Beauty, I have a question.') : '#' };
+  }
+}
+
+</script>
+</body>
+</html>
