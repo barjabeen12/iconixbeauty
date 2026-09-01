@@ -1,39 +1,42 @@
-Iconix Beauty — GitHub Pages deployment
+# Iconix Beauty — storefront setup
 
-1. Create a new repository on GitHub (e.g. iconix-store).
-2. Upload EVERYTHING INSIDE this folder to the repository root — the files
-   themselves, not the folder. index.html must sit at the top level.
-   Pages: index.html (home), shop.html, product.html, checkout.html.
-   SiteHeader.dc.html and SiteFooter.dc.html are shared partials — keep
-   their names exactly as they are.
-3. Repo → Settings → Pages → Source: "Deploy from a branch",
-   Branch: main, Folder: / (root) → Save.
-4. Wait ~1 minute. Your site is live at
-   https://<your-username>.github.io/<repo-name>/
+Static site. No server. Upload everything in this folder to the GitHub repo root
+(GitHub Pages), Netlify, or any static host.
 
-Before you go live, open store.js and fill in:
-  - orderEmail   (your order inbox)
-  - whatsapp     (923XXXXXXXXX)
-  - the three emailjs ids  (see SETUP.md, 5 minutes, free)
+## Pages
 
-Until the EmailJS ids are filled in, checkout still works — it hands the
-customer a one-tap "send on WhatsApp / send by email" with the full order.
+- `index.html` — home
+- `shop.html`, `product.html`, `checkout.html` — shop, product detail, checkout
+- `about.html`, `privacy.html`, `terms.html` — company pages
+- `SiteHeader.dc.html`, `SiteFooter.dc.html` — shared header/footer (keep names as-is)
+- `store.js` — ALL products, prices, shipping and contact details live here
+- `assets/` — imagery
 
-Custom domain: Settings → Pages → Custom domain, then add a CNAME record
-at your registrar pointing to <your-username>.github.io.
+## Order emails — ALREADY WIRED ✔
 
-IMPORTANT — upload ALL 8 files at the root, including the two with
-capital letters. If SiteHeader.dc.html or SiteFooter.dc.html are missing,
-the top of the page shows an empty grey band instead of the menu.
+Orders are emailed to **iconixbeauty84@gmail.com** via FormSubmit (free, no account).
 
-Root must contain:
-  index.html
-  shop.html
-  product.html
-  checkout.html
-  SiteHeader.dc.html      <-- the menu + shopping bag
-  SiteFooter.dc.html      <-- the footer
-  store.js
-  support.js
-  .nojekyll
-  assets/                 (folder with all the images)
+ONE-TIME ACTIVATION: place a test order on the live site. FormSubmit will send an
+email titled "Activate your form" to iconixbeauty84@gmail.com — open it and click
+the activation link once. Every order after that arrives automatically
+(check Spam for the first one).
+
+If the email ever fails to send, the customer is shown one-tap
+"Send on WhatsApp / Send by email" buttons with the full order — nothing is lost.
+
+Orders also always reference WhatsApp +92 321 8583514 (set in `store.js`).
+
+## Current prices (change in store.js AND in index/shop page markup)
+
+- Brightening Face Wash — Rs 1,199 (was 1,499, 20% off)
+- Tinted Sunscreen SPF 50+ — Rs 1,299 (was 1,599, 19% off)
+- Anti Aging Night Cream — Rs 1,499 (was 1,799, 17% off)
+- Night Cream + Face Wash — Rs 2,499 (was 2,698)
+- Sunscreen + Face Wash — Rs 2,299 (was 2,498)
+- 3 Products Combo — Rs 3,799 (was 3,997)
+
+Delivery: Rs 250 flat, FREE over Rs 3,000, 3–5 working days, COD only.
+
+## Still placeholder
+
+- Customer reviews on the home page — replace with real ones before going live.

@@ -1,76 +1,42 @@
 # Iconix Beauty — storefront setup
 
-Static site. No server, no PHP. Upload the whole folder to Netlify, Cloudflare Pages,
-GitHub Pages or any shared host and it works.
+Static site. No server. Upload everything in this folder to the GitHub repo root
+(GitHub Pages), Netlify, or any static host.
 
-## Files
+## Pages
 
-- `index.html` — entry point, sends visitors to the home page
-- `Home.dc.html`, `Shop.dc.html`, `Product.dc.html`, `Checkout.dc.html` — the four pages
-- `SiteHeader.dc.html`, `SiteFooter.dc.html` — shared header (with bag drawer) and footer
-- `store.js` — **all products, prices, shipping and contact details live here**
-- `assets/` — product imagery and logo
+- `index.html` — home
+- `shop.html`, `product.html`, `checkout.html` — shop, product detail, checkout
+- `about.html`, `privacy.html`, `terms.html` — company pages
+- `SiteHeader.dc.html`, `SiteFooter.dc.html` — shared header/footer (keep names as-is)
+- `store.js` — ALL products, prices, shipping and contact details live here
+- `assets/` — imagery
 
-## 1. Put in your real details (store.js, top of file)
+## Order emails — ALREADY WIRED ✔
 
-```
-orderEmail: 'orders@iconixbeauty.pk'   // your order inbox
-whatsapp:   '923218583514'             // already set to 0321 8583514
-shipping:   250                        // flat delivery charge
-freeShippingOver: 2500
-```
+Orders are emailed to **iconixbeauty84@gmail.com** via FormSubmit (free, no account).
 
-## 2. Turn on order emails (5 minutes, free)
+ONE-TIME ACTIVATION: place a test order on the live site. FormSubmit will send an
+email titled "Activate your form" to iconixbeauty84@gmail.com — open it and click
+the activation link once. Every order after that arrives automatically
+(check Spam for the first one).
 
-1. Sign up at **emailjs.com** and connect your email (Gmail works).
-2. Create an **Email Service** → copy the Service ID.
-3. Create an **Email Template**. Put this in the body:
+If the email ever fails to send, the customer is shown one-tap
+"Send on WhatsApp / Send by email" buttons with the full order — nothing is lost.
 
-```
-New order {{order_id}}
+Orders also always reference WhatsApp +92 321 8583514 (set in `store.js`).
 
-Customer: {{customer_name}}
-Phone: {{phone}}
-Email: {{email}}
-City: {{city}}
-Address: {{address}}
-Notes: {{notes}}
+## Current prices (change in store.js AND in index/shop page markup)
 
-{{items_text}}
+- Brightening Face Wash — Rs 1,199 (was 1,499, 20% off)
+- Tinted Sunscreen SPF 50+ — Rs 1,299 (was 1,599, 19% off)
+- Anti Aging Night Cream — Rs 1,499 (was 1,799, 17% off)
+- Night Cream + Face Wash — Rs 2,499 (was 2,698)
+- Sunscreen + Face Wash — Rs 2,299 (was 2,498)
+- 3 Products Combo — Rs 3,799 (was 3,997)
 
-Subtotal: {{subtotal}}
-Delivery: {{delivery}}
-Total: {{total}}
-Payment: {{payment}}
-```
+Delivery: Rs 250 flat, FREE over Rs 3,000, 3–5 working days, COD only.
 
-Set the template's "To email" to your inbox. Copy the Template ID.
-4. Account → General → copy the **Public Key**.
-5. Paste all three into `store.js`:
+## Still placeholder
 
-```
-emailjs: {
-  publicKey:  'xxxxxxxxxxxxxxxx',
-  serviceId:  'service_xxxxxxx',
-  templateId: 'template_xxxxxxx'
-}
-```
-
-Free tier is 200 emails/month. Until you fill these in, checkout still works — it just
-asks the customer to send the order via WhatsApp or their email app in one tap.
-
-## 3. Change prices or copy
-
-Everything is in `store.js` → `PRODUCTS`. Prices on the home and shop pages are also
-written into those pages, so update both (search for `Rs 1,250` etc.).
-
-## Notes / assumptions to confirm
-
-- Prices: facewash Rs 1,050, sunscreen Rs 1,250, night cream Rs 1,500, combo Rs 3,500
-  (from your price list). Change in `store.js` and in the Home/Shop page markup.
-- Delivery Rs 250 flat, free over Rs 2,500, 3–5 working days, 7-day return on unopened items.
-- Customer reviews on the home page are placeholders — replace before going live.
-- The facewash has no product photo yet — its card uses the printed label artwork. Send a bottle
-  shot and I will swap it in.
-- Photos in `assets/`: cream-beach.png, sunscreen-marble.jpg, sunscreen-box.jpg,
-  sunscreen-beach.jpg, trio.png (the set), facewash.png (label artwork).
+- Customer reviews on the home page — replace with real ones before going live.
