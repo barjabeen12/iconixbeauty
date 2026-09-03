@@ -41,7 +41,7 @@
       price: 1499,
       compareAt: 1799,
       img: 'assets/cream.png',
-      gallery: ['assets/cream.png', 'assets/cream-2.png', 'assets/cream-3.png', 'assets/trio.png'],
+      gallery: ['assets/cream.png', 'assets/cream-4.png', 'assets/cream-2.png', 'assets/cream-3.png'],
       badge: 'Overnight renewal',
       short: 'An advanced cell-renewing treatment that firms, smooths and replenishes while you sleep.',
       description: 'Defy the visible signs of time with Iconix Anti Aging Night Cream — an advanced cell-renewing treatment engineered to restore your skin\u2019s youthful vitality. This high-performance formula works deep within the skin matrix to smooth the appearance of stubborn fine lines, deep wrinkles and uneven texture. It dynamically boosts structural elasticity and firmness while delivering a rich surge of targeted moisture to plump up depleted cells.',
