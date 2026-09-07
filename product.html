@@ -12,6 +12,20 @@
 <title>Iconix Beauty</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <script src="store.js"></script>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1759737415255059');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1759737415255059&ev=PageView&noscript=1" /></noscript>
+
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #FFFCF7; color: #2F2519; }
@@ -138,6 +152,8 @@ class Component extends DCLogic {
     if (!window.ICONIX) window.addEventListener('iconix-ready', this._on = () => this.setState(s => ({ tick: s.tick + 1 })));
     const p = this.product();
     if (p) document.title = p.name + ' — Iconix Beauty';
+    if (p && window.fbq) fbq('track', 'ViewContent', { content_name: p.name, value: p.price, currency: 'PKR' });
+    if (!p) this._vcPending = true;
   }
   componentWillUnmount() { window.removeEventListener('iconix-ready', this._on); }
 
@@ -179,8 +195,8 @@ class Component extends DCLogic {
       },
       inc: () => this.setState(s => ({ qty: s.qty + 1 })),
       dec: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
-      addToCart: () => { S.add(p.sku, this.state.qty); window.dispatchEvent(new Event('iconix-open-cart')); },
-      addOther: (e) => { S.add(e.currentTarget.dataset.sku, 1); window.dispatchEvent(new Event('iconix-open-cart')); }
+      addToCart: () => { S.add(p.sku, this.state.qty); if (window.fbq) fbq('track', 'AddToCart', { content_name: p.name, value: p.price * this.state.qty, currency: 'PKR' }); window.dispatchEvent(new Event('iconix-open-cart')); },
+      addOther: (e) => { var o = S.bySku(e.currentTarget.dataset.sku); S.add(e.currentTarget.dataset.sku, 1); if (window.fbq && o) fbq('track', 'AddToCart', { content_name: o.name, value: o.price, currency: 'PKR' }); window.dispatchEvent(new Event('iconix-open-cart')); }
     };
   }
 }

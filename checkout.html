@@ -12,6 +12,20 @@
 <title>Checkout — Iconix Beauty</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <script src="store.js"></script>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1759737415255059');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1759737415255059&ev=PageView&noscript=1" /></noscript>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   body { margin: 0; background: #FFFCF7; color: #2F2519; }
@@ -167,6 +181,12 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this._on = () => this.setState(s => ({ tick: s.tick + 1 }));
+    this._ic = () => {
+      if (this._icSent || !window.ICONIX || !window.fbq) return;
+      var t = window.ICONIX.totals();
+      if (window.ICONIX.lines().length) { fbq('track', 'InitiateCheckout', { value: t.total, currency: 'PKR', num_items: window.ICONIX.lines().length }); this._icSent = true; }
+    };
+    setTimeout(this._ic, 400);
     window.addEventListener('iconix-cart', this._on);
     window.addEventListener('iconix-ready', this._on);
     if (!window.ICONIX) setTimeout(this._on, 120);
@@ -246,6 +266,7 @@ class Component extends DCLogic {
         }
         this.setState({ busy: true, error: '', order });
         S2.sendOrder(order).then(() => {
+          if (window.fbq) fbq('track', 'Purchase', { value: S2.totals().total, currency: 'PKR', content_name: 'Order ' + order.order_id });
           S2.clear();
           this.setState({ busy: false, done: true, fallback: false });
         }).catch(() => {

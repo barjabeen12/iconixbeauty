@@ -13,6 +13,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <script src="store.js"></script>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1759737415255059');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1759737415255059&ev=PageView&noscript=1" /></noscript>
+
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #FFFCF7; color: #3B2F22; }
@@ -429,7 +443,7 @@ class Component extends DCLogic {
       closeModal: this.close,
       addFromModal: (e) => {
         const sku = e.currentTarget.dataset.sku;
-        if (window.ICONIX) window.ICONIX.add(sku, 1);
+        if (window.ICONIX) { window.ICONIX.add(sku, 1); const p = window.ICONIX.bySku(sku); if (window.fbq && p) fbq('track', 'AddToCart', { content_name: p.name, value: p.price, currency: 'PKR' }); }
         this.close();
         window.dispatchEvent(new Event('iconix-open-cart'));
       },
@@ -437,6 +451,7 @@ class Component extends DCLogic {
         const sku = e.currentTarget.dataset.sku;
         if (!window.ICONIX) return;
         window.ICONIX.add(sku, 1);
+        var p = window.ICONIX.bySku(sku); if (window.fbq && p) fbq('track', 'AddToCart', { content_name: p.name, value: p.price, currency: 'PKR' });
         window.dispatchEvent(new Event('iconix-open-cart'));
       }
     };
