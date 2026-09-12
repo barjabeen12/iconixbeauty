@@ -44,7 +44,7 @@ fbq('track', 'PageView');
       <p style="fontSize:10px;letterSpacing:.28em;textTransform:uppercase;color:#B8862F;margin:0 0 24px">Order received</p>
       <h1 style="fontFamily:'Cormorant Garamond',serif;fontWeight:300;fontSize:clamp(36px,6vw,52px);lineHeight:1.1;margin:0 0 22px">Thank you.</h1>
       <p style="fontSize:16px;lineHeight:1.8;fontWeight:300;color:#5A4C3C;margin:0 0 12px">Your order <strong style="fontWeight:400">{{ orderId }}</strong> is with us. We'll confirm on WhatsApp within a few hours and dispatch within 3–5 working days.</p>
-      <p style="fontSize:14px;lineHeight:1.8;fontWeight:300;color:#8E7F6D;margin:0 0 44px">Payment is cash on delivery — {{ totalText }} to the courier.</p>
+      <p style="fontSize:14px;lineHeight:1.8;fontWeight:300;color:#8E7F6D;margin:0 0 44px">Payment is cash on delivery — {{ paidTotalText }} to the courier.</p>
       <a href="shop.html" style="display:inline-block;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;padding:19px 40px;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase" style-hover="background:linear-gradient(135deg,#E0BC6E,#C0912F);color:#fff">Continue shopping</a>
     </section>
   </sc-if>
@@ -121,8 +121,8 @@ fbq('track', 'PageView');
             <p style="fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#B8862F;margin:0 0 12px">One last step</p>
             <p style="fontSize:14.5px;lineHeight:1.75;fontWeight:300;color:#5A4C3C;margin:0 0 22px">Your order <strong style="fontWeight:400">{{ orderId }}</strong> is ready but couldn't be emailed automatically. Send it to us with one tap — both options carry the full details.</p>
             <div style="display:flex;gap:14px;flexWrap:wrap">
-              <a href="{{ fallbackWa }}" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;padding:16px 30px;fontSize:11px;letterSpacing:.2em;textTransform:uppercase" style-hover="background:linear-gradient(135deg,#E0BC6E,#C0912F);color:#fff">Send on WhatsApp</a>
-              <a href="{{ fallbackMail }}" style="border:1px solid rgba(59,47,34,.22);padding:16px 30px;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#5A4C3C" style-hover="borderColor:#B8862F;color:#B8862F">Send by email</a>
+              <a href="{{ fallbackWa }}" onClick="{{ confirmFallback }}" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;padding:16px 30px;fontSize:11px;letterSpacing:.2em;textTransform:uppercase" style-hover="background:linear-gradient(135deg,#E0BC6E,#C0912F);color:#fff">Send on WhatsApp</a>
+              <a href="{{ fallbackMail }}" onClick="{{ confirmFallback }}" style="border:1px solid rgba(59,47,34,.22);padding:16px 30px;fontSize:11px;letterSpacing:.2em;textTransform:uppercase;color:#5A4C3C" style-hover="borderColor:#B8862F;color:#B8862F">Send by email</a>
             </div>
           </div>
         </sc-if>
@@ -177,7 +177,7 @@ fbq('track', 'PageView');
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { tick: 0, busy: false, done: false, error: '', fallback: false, order: null };
+  state = { tick: 0, busy: false, done: false, error: '', fallback: false, order: null, paid: null };
 
   componentDidMount() {
     this._on = () => this.setState(s => ({ tick: s.tick + 1 }));
@@ -194,6 +194,20 @@ class Component extends DCLogic {
   componentWillUnmount() {
     window.removeEventListener('iconix-cart', this._on);
     window.removeEventListener('iconix-ready', this._on);
+  }
+
+  firePurchase(paid, order) {
+    if (this._purchaseSent) return;
+    if (!window.fbq || !paid || !(paid.total > 0)) return;
+    this._purchaseSent = true;
+    fbq('track', 'Purchase', {
+      value: Number(paid.total.toFixed(2)),
+      currency: 'PKR',
+      num_items: paid.numItems,
+      contents: paid.contents,
+      content_type: 'product',
+      order_id: order.order_id
+    });
   }
 
   buildOrder(fd) {
@@ -232,6 +246,7 @@ class Component extends DCLogic {
         ? 'Add ' + S.fmt(t.toFreeShipping) + ' more and delivery is free.'
         : 'Cash on delivery · 3–5 working days',
       orderId: o ? o.order_id : '',
+      paidTotalText: this.state.paid ? this.state.paid.totalText : t.totalText,
       busy: this.state.busy,
       submitLabel: this.state.busy ? 'Placing order…' : 'Place order · ' + t.totalText,
       hasError: !!this.state.error,
@@ -241,6 +256,7 @@ class Component extends DCLogic {
       fallbackMail: o && S ? S.mailtoLink(o) : '#',
       waLink: S ? S.whatsappLink('Hello Iconix Beauty, I would like to place an order.') : '#',
       formRef: (el) => { this._form = el; },
+      confirmFallback: () => { this.firePurchase(this.state.paid, this.state.order || {}); },
       inc: (e) => { const sku = e.currentTarget.dataset.sku; const c = S.read(); S.setQty(sku, (c[sku] || 0) + 1); },
       dec: (e) => { const sku = e.currentTarget.dataset.sku; const c = S.read(); S.setQty(sku, (c[sku] || 0) - 1); },
       submit: (e) => {
@@ -264,9 +280,17 @@ class Component extends DCLogic {
           this.setState({ error: 'Phone number must be 11 digits, e.g. 0300 1234567.' });
           return;
         }
-        this.setState({ busy: true, error: '', order });
+        const snapLines = S2.lines();
+        const snapTotals = S2.totals();
+        const paid = {
+          total: snapTotals.total,
+          totalText: snapTotals.totalText,
+          numItems: snapLines.reduce((n, l) => n + l.qty, 0),
+          contents: snapLines.map((l) => ({ id: l.sku, quantity: l.qty, item_price: l.price }))
+        };
+        this.setState({ busy: true, error: '', order, paid });
         S2.sendOrder(order).then(() => {
-          if (window.fbq) fbq('track', 'Purchase', { value: S2.totals().total, currency: 'PKR', content_name: 'Order ' + order.order_id });
+          this.firePurchase(paid, order);
           S2.clear();
           this.setState({ busy: false, done: true, fallback: false });
         }).catch(() => {
