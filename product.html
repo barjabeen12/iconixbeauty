@@ -78,7 +78,7 @@ fbq('track', 'PageView');
         </div>
         <button type="button" onClick="{{ addToCart }}" style="flex:1;minWidth:220px;border:0;background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff;padding:0 40px;height:56px;fontFamily:inherit;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer" style-hover="background:linear-gradient(135deg,#E0BC6E,#C0912F)">Add to bag</button>
       </div>
-      <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:flex;alignItems:center;justifyContent:center;height:56px;border:1px solid rgba(59,47,34,.18);fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;color:#5A4C3C;marginBottom:30px" style-hover="borderColor:#B8862F;color:#B8862F">Order on WhatsApp</a>
+      <button type="button" onClick="{{ buyNow }}" style="width:100%;display:flex;alignItems:center;justifyContent:center;height:56px;border:1px solid #B8862F;background:transparent;color:#B8862F;fontFamily:inherit;fontSize:11.5px;letterSpacing:.2em;textTransform:uppercase;cursor:pointer;marginBottom:30px" style-hover="background:linear-gradient(135deg,#D8AE55,#B8862F);color:#fff">Buy now</button>
 
       <div style="display:flex;flexDirection:column;gap:9px;marginBottom:44px">
         <span style="fontSize:12.5px;fontWeight:300;color:#5A4C3C"><span style="color:#B8862F;marginRight:8px">✓</span>100% authentic — sold only by Iconix Beauty</span>
@@ -193,6 +193,7 @@ class Component extends DCLogic {
         const src = e.currentTarget.dataset.src;
         this.setState({ imgIndex: Math.max(0, gal.indexOf(src)) });
       },
+      buyNow: () => { S.add(p.sku, this.state.qty); if (window.fbq) fbq('track', 'AddToCart', { content_name: p.name, value: p.price * this.state.qty, currency: 'PKR' }); window.location.href = 'checkout.html'; },
       inc: () => this.setState(s => ({ qty: s.qty + 1 })),
       dec: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
       addToCart: () => { S.add(p.sku, this.state.qty); if (window.fbq) fbq('track', 'AddToCart', { content_name: p.name, value: p.price * this.state.qty, currency: 'PKR' }); window.dispatchEvent(new Event('iconix-open-cart')); },
